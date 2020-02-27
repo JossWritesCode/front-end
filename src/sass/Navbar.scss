@@ -3,6 +3,8 @@
   text-transform: uppercase;
   color: $titles-white;
   background: $headers-dark;
+  position: relative;
+  z-index: 5;
   &-text-company {
     font-size: 2rem;
   }
