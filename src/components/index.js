@@ -6,9 +6,6 @@ import AuthOptionsModal from "./Modal/AuthOptionsModal/AuthOptionsModal";
 import SideDrawerButton from "./SideDrawer/SideDrawerButton/SideDrawerButton";
 import SideDrawerMenu from "./SideDrawer/SideDrawerMenu/SideDrawerMenu";
 
-<<<<<<< HEAD
-export { AuthModal, Navbar, Backdrop, Modal, AuthOptionsModal };
-=======
 export {
   AuthModal,
   Navbar,
@@ -18,4 +15,3 @@ export {
   SideDrawerButton,
   SideDrawerMenu
 };
->>>>>>> e1230b3d79db77260334456f0f15cbc047444970
