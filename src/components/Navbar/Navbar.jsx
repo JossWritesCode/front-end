@@ -1,7 +1,7 @@
 import React from "react";
 import { SideDrawerButton } from "../";
 
-const Navbar = ({ className = "" }) => {
+const Navbar = ({ className = "", visibilityHandler }) => {
   return (
     <div className={`${className} Navbar`}>
       <div className="Navbar-text">
@@ -9,7 +9,7 @@ const Navbar = ({ className = "" }) => {
         <div>insight, culture, passion</div>
       </div>
 
-      <SideDrawerButton />
+      <SideDrawerButton onClickHandler={visibilityHandler} />
     </div>
   );
 };
