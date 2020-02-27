@@ -9,9 +9,13 @@ body {
 }
 
 a,
-.botton-logo,
+.bottom-logo,
 .information-text,
 .text-spaced,
 .text {
   font-family: "Alegreya Sans";
+}
+
+.hide {
+  display: none !important;
 }
