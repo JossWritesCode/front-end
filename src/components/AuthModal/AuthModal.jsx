@@ -3,7 +3,7 @@ import { AuthOptionsModal, Backdrop } from "..";
 
 const AuthModal = ({ className = "" }) => {
   return (
-    <div className={`${className} AuthModal`}>
+    <div className={`${className} AuthModal hide`}>
       <Backdrop />
       <AuthOptionsModal />
     </div>
