@@ -1,0 +1,9 @@
+.Navbar {
+  font-family: "Yanone Kaffeesatz";
+  text-transform: uppercase;
+  color: $titles-white;
+  background: $headers-dark;
+  &-text-company {
+    font-size: 2rem;
+  }
+}
