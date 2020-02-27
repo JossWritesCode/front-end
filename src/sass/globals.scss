@@ -1,0 +1,17 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 62.5%;
+}
+
+a,
+.botton-logo,
+.information-text,
+.text-spaced,
+.text {
+  font-family: "Alegreya Sans";
+}
