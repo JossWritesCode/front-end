@@ -1,10 +1,12 @@
 import React from "react";
-import { Landing } from "../";
+import { Navbar } from "../";
+import AuthModal from "../AuthModal/AuthModal";
 
 function App() {
   return (
     <div className="App">
-      <Landing />
+      <AuthModal />
+      <Navbar />
     </div>
   );
 }
