@@ -1,10 +1,12 @@
-import React from "react";
-import { Landing } from "../";
+import React from 'react';
+import { Landing } from '../';
+import ProtectedRoute from '../utils/ProctectedRoute';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <Landing />
+      <ProtectedRoute path='/' component={} />
     </div>
   );
 }
