@@ -1,0 +1,21 @@
+.Navbar {
+  font-family: "Yanone Kaffeesatz";
+  text-transform: uppercase;
+  color: $titles-white;
+  background: $headers-dark;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  height: auto;
+
+  &-text {
+    width: 80%;
+    margin-left: 15px;
+    letter-spacing: 0.13em;
+    &-company {
+      font-size: 2rem;
+      position: relative;
+      top: 5px;
+    }
+  }
+}
