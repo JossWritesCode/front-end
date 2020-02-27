@@ -5,7 +5,17 @@
   background: $headers-dark;
   position: relative;
   z-index: 5;
-  &-text-company {
-    font-size: 2rem;
+  display: flex;
+  height: auto;
+
+  &-text {
+    width: 80%;
+    margin-left: 15px;
+    letter-spacing: 0.13em;
+    &-company {
+      font-size: 2rem;
+      position: relative;
+      top: 5px;
+    }
   }
 }
