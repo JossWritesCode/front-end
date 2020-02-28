@@ -19,18 +19,17 @@
 
       &:last-child {
         padding-bottom: 15px;
+        justify-content: space-evenly;
+        margin: 0 auto;
       }
     }
   }
 
   &-OAuth-icons {
+    width: 80%;
     img {
       width: auto;
-      height: 30px;
-    }
-
-    div {
-      height: 30px;
+      height: 25px;
     }
   }
 }
