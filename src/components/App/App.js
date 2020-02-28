@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Navbar, SideDrawerMenu, AuthModal } from '../';
-import ProtectedRoute from '../utils/ProctectedRoute';
+import ProtectedRoute from '../utils/ProtectedRoute';
 import LoginPage from '../Pages/LoginPage/LoginPage';
+import DonationPage from '../DonatePage/DonationPage'
 function App() {
   const [modalsVisibility, setModalVisibility] = useState({
     authModal: false,
@@ -35,7 +36,7 @@ function App() {
         show={modalsVisibility.sideDrawerMenu}
       />
       <Navbar visibilityHandler={modalsVisibilityHandler} />
-      <ProtectedRoute path='/' component={LoginPage} />
+      <ProtectedRoute path='/' component={DonationPage} />
     </div>
   );
 }
