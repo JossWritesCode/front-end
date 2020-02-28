@@ -5,6 +5,8 @@ import AuthModal from "./AuthModal/AuthModal";
 import AuthOptionsModal from "./Modal/AuthOptionsModal/AuthOptionsModal";
 import SideDrawerButton from "./SideDrawer/SideDrawerButton/SideDrawerButton";
 import SideDrawerMenu from "./SideDrawer/SideDrawerMenu/SideDrawerMenu";
+import Header from "./Header/Header";
+import LoginPage from "./Pages/LoginPage/LoginPage";
 
 export {
   AuthModal,
@@ -13,5 +15,7 @@ export {
   Modal,
   AuthOptionsModal,
   SideDrawerButton,
-  SideDrawerMenu
+  SideDrawerMenu,
+  Header,
+  LoginPage
 };
