@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Navbar, SideDrawerMenu, AuthModal } from '../';
-
+import PrivateRoute from '../utils/ProctectedRoute';
 function App() {
   const [modalsVisibility, setModalVisibility] = useState({
     authModal: false,
@@ -33,6 +33,7 @@ function App() {
         show={modalsVisibility.sideDrawerMenu}
       />
       <Navbar visibilityHandler={modalsVisibilityHandler} />
+      <PrivateRoute path='/' component={} />
     </div>
   );
 }
