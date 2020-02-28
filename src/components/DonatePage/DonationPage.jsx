@@ -1,34 +1,33 @@
 import React,{useState} from 'react'
 import Header from '../Header/Header'
-import {connect, useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {initialState, rootReducer} from '../../redux/reducers/reducer'
 import {donateMoney} from '../../redux/actions/action'
-//import {useSelector} and {useDispatch} from react-redux
+import {useSelector} from 'react-redux'
 import {Button}from '..'
-import DonateButton from '../Button/DonateButton/DonateButton';
+import DonateButton from '../Button/DonateButton/DonateButton'
 
 const DonationPage = (props) => {
-    const [state, setState] = useState(rootReducer, initialState);
-    // const state = useSelector(state => state.InitialState)
+    const [amount, setAmount] = useState(0);
+    const dispatch = useDispatch()
+    const user = useSelector(amount => amount.InitialState)
     // const money = useDispatch()   //then write inline function...
 
-    const onClick= (e)=> {
-      state({...state, [e.target.name]:e.target.value});
+    const handleChange= (e)=> {
+      setAmount({...amount, [e.target.name]:e.target.value});
       console.log(e)
     }
 
-    const handleSubmit = e =>{
+    const handleSubmit = (e, value) =>{
         e.preventDefault();
-        donateMoney(state);
-        setState({
-          name: '',
-          method: '',
-          account: '',
-          amount: ''
-        })
+        setAmount(value);
+        dispatch(donateMoney(amount))
+        setAmount(0)
     }
 
-    console.log(props);
+    const showAmount = (dollar) =>{
+      setAmount(dollar)
+    }
 
     
 
@@ -36,28 +35,28 @@ const DonationPage = (props) => {
       
         <div>
           <Header title="Donate Now" />
-        <form>
-          <h2>Choose an Amount</h2>
-            <Button onClick={onClick} text='$5'/>
-            <Button text='$10'/>
-            <Button text='$20'/>
-            <Button text='$50'/>
-            <Button text='$100'/>
-            <Button text='$200'/>
-
+          <form onSubmit={handleSubmit}>
+            <h2>Choose an Amount</h2>
+            <Button><input type='button'value={20} onClick={(e) => showAmount(e.target.value)} /></Button>
+            <Button><input type='button'value={10} onClick={(e) => showAmount(e.target.value)} /></Button>
+            <Button><input type='button'value={50} onClick={(e) => showAmount(e.target.value)} /></Button>
+            <Button><input type='button'value={100} onClick={(e) => showAmount(e.target.value)} /></Button>
+            <Button><input type='button'value={200} onClick={(e) => showAmount(e.target.value)} /></Button>
+            
             <h3>Other Amount</h3>
             <input
-                type='tel'
-                onClick={onClick}
-                placeholder='$ Other Amount'
-            />
+               type='tel'
+               name='custom amount'
+               placeholder='$ other amount'
+               onChange={handleChange}
+               />
 
-            <div>
-               <DonateButton onSubmit={handleSubmit}/>
-            </div>
-          
-            {console.log(state)}
-          </form>
+              <div>
+                <DonateButton onSubmit={handleSubmit}/>
+              </div>
+              {console.log(amount)}
+            </form>
+            <div>${amount}</div>
         </div>
      
     

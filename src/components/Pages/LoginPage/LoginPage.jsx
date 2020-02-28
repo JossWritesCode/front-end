@@ -1,5 +1,8 @@
 import React from "react";
 import { Header, LoginForm } from "../../";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import TwitterIcon from "@material-ui/icons/Twitter";
+import GoogleIcon from "../../../assets/images/google-icon.png";
 const LoginPage = ({ className }) => {
   return (
     <div className={`${className} LoginPage Page`}>
@@ -12,7 +15,13 @@ const LoginPage = ({ className }) => {
       <div className="LoginPage-OAuth-options">
         <p>Login</p>
         <p>with your Social Media Account</p>
-        <p className="LoginPage-OAuth-icons"></p>
+        <p className="LoginPage-OAuth-icons">
+          <FacebookIcon color="primary" />
+          <TwitterIcon color="primary" />
+          <div>
+            <img src={GoogleIcon} alt="google-icon" srcset="" />
+          </div>
+        </p>
       </div>
     </div>
   );

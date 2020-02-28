@@ -4,22 +4,34 @@
 
 .LoginPage {
   p {
-    font-size: 0.7rem;
+    font-size: 0.95rem;
     font-family: "Alegreya Sans";
     letter-spacing: 0.03em;
     padding: 0 15px;
   }
 
   &-OAuth-options {
-    margin-top: 15px;
+    margin-top: 50px;
     p {
       display: flex;
       justify-content: center;
-      margin: 10px 0;
+      margin: 15px 0;
 
       &:last-child {
         padding-bottom: 15px;
+        justify-content: space-evenly;
+        margin: 25px auto 0;
+        padding-bottom: 125px;
       }
+    }
+  }
+
+  &-OAuth-icons {
+    width: 80%;
+    margin-top: 25px;
+    img {
+      width: auto;
+      height: 25px;
     }
   }
 }
