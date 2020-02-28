@@ -4,7 +4,6 @@ import * as Yup from "yup";
 import { SubmitButton } from "../../";
 
 const SignUpForm = ({ className = "", touched, errors }) => {
-  console.log(errors);
   return (
     <div className={`${className} FormContainer`}>
       <Form className="LoginForm">
