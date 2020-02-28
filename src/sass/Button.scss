@@ -1,10 +1,15 @@
 .Button {
   padding: 5px 25px;
   border-radius: 5px;
-  background: $button-red;
+  background: $button-white;
+
   font-family: "Yanone Kaffeesatz";
   letter-spacing: 0.11em;
   font-size: 1.1rem;
   color: $titles-white;
   margin: 25px auto;
+
+  .Donate {
+    background: $button-red;
+  }
 }
