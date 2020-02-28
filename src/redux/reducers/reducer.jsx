@@ -4,7 +4,7 @@ import { INCREASE_DONATION,
 
 
 export const initialState = {
-    addDonation: 0,
+    donationAmount: 0,
     button: [
         {id: 1, price: 5},
         {id: 2, price: 10},
@@ -23,12 +23,12 @@ export const rootReducer = (state = initialState, action)=>{
         case INCREASE_DONATION:
             return{
                 ...state,
-                addDonation: state.addDonation + action.payload.price
+                donationAmount: state.donationAmount + action.payload.price
             }
         case CLEAR_DONATION:
             return{
                 ...state,
-                addDonation: state.addDonation - action.payload.price
+                donationAmount: state.donationAmount - action.payload.price
             }
         default:
             return state;

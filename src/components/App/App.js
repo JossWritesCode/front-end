@@ -1,7 +1,21 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1ce780204247e6353fff223f4d0e7a6c3f34c6ee
 import React, { useState } from 'react';
 import { Navbar, SideDrawerMenu, AuthModal } from '../';
 import ProtectedRoute from '../utils/ProtectedRoute';
 import LoginPage from '../Pages/LoginPage/LoginPage';
+<<<<<<< HEAD
+=======
+import DonationPage from '../DonatePage/DonationPage'
+=======
+import React, { useState } from "react";
+import { Navbar, SideDrawerMenu, AuthModal } from "../";
+import ProtectedRoute from "../utils/ProtectedRoute";
+import LoginPage from "../Pages/LoginPage/LoginPage";
+>>>>>>> 6e03e2ea6ed31968f6d19417b7694accde1baec2
+>>>>>>> 1ce780204247e6353fff223f4d0e7a6c3f34c6ee
 function App() {
   const [modalsVisibility, setModalVisibility] = useState({
     authModal: false,
@@ -35,7 +49,15 @@ function App() {
         show={modalsVisibility.sideDrawerMenu}
       />
       <Navbar visibilityHandler={modalsVisibilityHandler} />
+<<<<<<< HEAD
       <ProtectedRoute path='/' component={LoginPage} />
+=======
+<<<<<<< HEAD
+      <ProtectedRoute path='/' component={DonationPage} />
+=======
+      <ProtectedRoute path="/" component={LoginPage} />
+>>>>>>> 6e03e2ea6ed31968f6d19417b7694accde1baec2
+>>>>>>> 1ce780204247e6353fff223f4d0e7a6c3f34c6ee
     </div>
   );
 }
