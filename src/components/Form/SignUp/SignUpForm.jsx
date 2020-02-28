@@ -25,7 +25,11 @@ const SignUpForm = ({ className = "", touched, errors }) => {
           <p>{touched.verify && errors.verify}</p>
         </label>
 
-        <SubmitButton disabled={Object.keys(errors).length === 0} />
+        <SubmitButton
+          disabled={
+            Object.keys(touched).length === 0 || Object.keys(errors).length > 0
+          }
+        />
       </Form>
     </div>
   );
