@@ -1,5 +1,5 @@
 .SideDrawer {
-  &Button {
+  &-Button {
     width: 11%;
     height: 3vh;
     border: 1px solid $button-white;
@@ -15,6 +15,38 @@
       width: 85%;
       height: 1px;
       background: $background-white;
+    }
+  }
+
+  &-Menu {
+    justify-content: flex-end;
+
+    .Modal {
+      width: 60%;
+      height: 60vh;
+      top: 55px;
+      transition: all 1s;
+      transform: translateX(0px);
+    }
+
+    &.hide .Modal {
+      transition: all 1s;
+      transform: translateX(500px);
+    }
+
+    &-link {
+      font-size: 1.5rem;
+      padding: 12px;
+
+      &.auth-link {
+        background: $background-pink;
+
+        &:first-child {
+          border-radius: inherit;
+          border-bottom-right-radius: unset;
+          border-bottom-left-radius: unset;
+        }
+      }
     }
   }
 }

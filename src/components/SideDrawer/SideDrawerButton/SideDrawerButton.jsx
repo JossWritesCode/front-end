@@ -1,8 +1,8 @@
 import React from "react";
 
-const SideDrawerButton = ({ className = "" }) => {
+const SideDrawerButton = ({ className = "", onClickHandler }) => {
   return (
-    <div className={`${className} SideDrawerButton`}>
+    <div className={`${className} SideDrawer-Button`} onClick={onClickHandler}>
       <div></div>
       <div></div>
       <div></div>

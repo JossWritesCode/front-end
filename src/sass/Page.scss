@@ -1,0 +1,36 @@
+.Page {
+  background: $background-white;
+}
+
+.LoginPage {
+  p {
+    font-size: 0.7rem;
+    font-family: "Alegreya Sans";
+    letter-spacing: 0.03em;
+    padding: 0 15px;
+  }
+
+  &-OAuth-options {
+    margin-top: 15px;
+    p {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+
+      &:last-child {
+        padding-bottom: 15px;
+      }
+    }
+  }
+
+  &-OAuth-icons {
+    img {
+      width: auto;
+      height: 30px;
+    }
+
+    div {
+      height: 30px;
+    }
+  }
+}

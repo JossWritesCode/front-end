@@ -1,0 +1,30 @@
+.FormContainer {
+  width: 100vw;
+  background: $background-white;
+  font-family: "Yanone Kaffeesatz";
+}
+
+.LoginForm {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  input {
+    width: 100%;
+    margin-top: 5px;
+    border-radius: 5px;
+    font-size: 1.25rem;
+    border: 1px solid black;
+  }
+
+  label {
+    flex-flow: column;
+    display: flex;
+    padding: 15px 15px 0;
+    font-size: 0.85rem;
+    letter-spacing: 0.11em;
+
+    &:last-child {
+      padding-bottom: 15px;
+    }
+  }
+}
