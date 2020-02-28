@@ -1,10 +1,6 @@
-
-
-import DonationPage from '../DonatePage/DonationPage'
 import React, { useState } from "react";
-import { Navbar, SideDrawerMenu, AuthModal } from "../";
+import { Navbar, SideDrawerMenu, AuthModal, LoginPage, SignupPage } from "../";
 import ProtectedRoute from "../utils/ProtectedRoute";
-import LoginPage from "../Pages/LoginPage/LoginPage";
 
 function App() {
   const [modalsVisibility, setModalVisibility] = useState({
@@ -13,12 +9,12 @@ function App() {
   });
 
   const modalsVisibilityHandler = event => {
-    console.log('clicked by', event.target);
+    console.log("clicked by", event.target);
     const classListContainsSideDrawer = event.target.classList.value
-      .split(' ')
+      .split(" ")
       .filter(value => value.length > 0)
-      .map(value => value.split('-'))
-      .some(value => value.includes('SideDrawer'));
+      .map(value => value.split("-"))
+      .some(value => value.includes("SideDrawer"));
     if (classListContainsSideDrawer) {
       const newModalVisibilityState = {
         ...modalsVisibility,
@@ -29,7 +25,7 @@ function App() {
   };
 
   return (
-    <div className='App'>
+    <div className="App">
       <AuthModal
         visibilityHandler={modalsVisibilityHandler}
         show={modalsVisibility.authModal}
@@ -39,9 +35,7 @@ function App() {
         show={modalsVisibility.sideDrawerMenu}
       />
       <Navbar visibilityHandler={modalsVisibilityHandler} />
-
-      <ProtectedRoute path='/' component={DonationPage} />
-
+      <ProtectedRoute path="/" component={LoginPage} />
     </div>
   );
 }

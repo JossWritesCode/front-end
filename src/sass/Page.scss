@@ -2,13 +2,15 @@
   background: $background-white;
 }
 
-.LoginPage {
+.LoginPage,
+.SignUpPage {
   p {
     font-size: 0.95rem;
     font-family: "Alegreya Sans";
     letter-spacing: 0.03em;
     padding: 0 15px;
   }
+<<<<<<< HEAD
 
   &-OAuth-options {
     margin-top: 50px;
@@ -34,4 +36,6 @@
       height: 25px;
     }
   }
+=======
+>>>>>>> 32a3b58d16bd5d29b9c779922ba30fb7e308dd48
 }
