@@ -9,16 +9,21 @@ export const CLEAR_DONATION = 'CLEAR_DONATION';
 export const donateMoney = (donate) => dispatch => {
     //payload for money donated 
     console.log(donate);
-    return{
+    
+        dispatch({
         type: INCREASE_DONATION,
         payload: donate,
-    }
+        })
+    
 }
 export const  clearAmount = (donate) => dispatch => {
     //clear the amount of donated money
     console.log(donate);
-    return{
+
+    
+        dispatch({
         type: CLEAR_DONATION,
         payload: donate,
-    }
+        })
+    
 }

@@ -6,7 +6,7 @@ import "./sass/index.scss";
 import * as serviceWorker from "./serviceWorker";
 import thunk from "redux-thunk";
 import { createStore, applyMiddleware } from "redux";
-import { rootReducer } from "./redux/reducers/reducer";
+import { rootReducer} from "./redux/reducers/reducer";
 import { Provider } from "react-redux";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
