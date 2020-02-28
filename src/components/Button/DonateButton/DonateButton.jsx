@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "../../";
-const DonateButton = () => {
-  return <Button text="Donate" className="DonateButton" />;
+const DonateButton = ({ className = "PrimaryButton" }) => {
+  return <Button text="Donate" className={className} />;
 };
 
 export default DonateButton;
