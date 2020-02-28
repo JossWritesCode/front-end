@@ -13,8 +13,6 @@ export const initialState = {
         {id: 5, price: 100},
         {id: 6, price: 200}
     ] 
-        
-    
 
 }
 

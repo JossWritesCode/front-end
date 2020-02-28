@@ -1,15 +1,8 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import { Navbar, SideDrawerMenu, AuthModal } from '../';
 import ProtectedRoute from '../utils/ProtectedRoute';
 import LoginPage from '../Pages/LoginPage/LoginPage';
 import DonationPage from '../DonatePage/DonationPage'
-=======
-import React, { useState } from "react";
-import { Navbar, SideDrawerMenu, AuthModal } from "../";
-import ProtectedRoute from "../utils/ProtectedRoute";
-import LoginPage from "../Pages/LoginPage/LoginPage";
->>>>>>> 6e03e2ea6ed31968f6d19417b7694accde1baec2
 function App() {
   const [modalsVisibility, setModalVisibility] = useState({
     authModal: false,
@@ -43,11 +36,7 @@ function App() {
         show={modalsVisibility.sideDrawerMenu}
       />
       <Navbar visibilityHandler={modalsVisibilityHandler} />
-<<<<<<< HEAD
       <ProtectedRoute path='/' component={DonationPage} />
-=======
-      <ProtectedRoute path="/" component={LoginPage} />
->>>>>>> 6e03e2ea6ed31968f6d19417b7694accde1baec2
     </div>
   );
 }
