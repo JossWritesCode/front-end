@@ -13,7 +13,7 @@ import DonateButton from "./Button/DonateButton/DonateButton";
 import SubmitButton from "./Button/SubmitButton/SubmitButton";
 import SignUpForm from "./Form/SignUp/SignUpForm";
 import OAuthOptions from "./OAuthOptions/OAuthOptions";
-import SignupPage from "./SignUp/SignUp";
+import SignupPage from "./Pages/SignUpPage/SignUpPage";
 
 export {
   AuthModal,
