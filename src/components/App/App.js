@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Navbar, SideDrawerMenu, AuthModal } from '../';
-import PrivateRoute from '../utils/ProctectedRoute';
+import ProtectedRoute from '../utils/ProctectedRoute';
+import LoginPage from '../Pages/LoginPage/LoginPage';
 function App() {
   const [modalsVisibility, setModalVisibility] = useState({
     authModal: false,
@@ -22,6 +23,7 @@ function App() {
       setModalVisibility(newModalVisibilityState);
     }
   };
+
   return (
     <div className='App'>
       <AuthModal
@@ -33,7 +35,7 @@ function App() {
         show={modalsVisibility.sideDrawerMenu}
       />
       <Navbar visibilityHandler={modalsVisibilityHandler} />
-      <PrivateRoute path='/' component={} />
+      <ProtectedRoute path='/' component={LoginPage} />
     </div>
   );
 }
