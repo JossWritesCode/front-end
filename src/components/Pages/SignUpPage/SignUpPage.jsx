@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, SignUpForm, OAuthOptions } from "../";
+import { Header, SignUpForm, OAuthOptions } from "../..";
 
 const SignUp = ({ className }) => {
   return (
