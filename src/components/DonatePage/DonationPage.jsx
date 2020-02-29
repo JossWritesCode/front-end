@@ -37,11 +37,11 @@ const DonationPage = (props) => {
           <Header title="Donate Now" />
           <form onSubmit={handleSubmit}>
             <h2>Choose an Amount</h2>
-            <Button><input type='button'value={20} onClick={(e) => showAmount(e.target.value)} /></Button>
-            <Button><input type='button'value={10} onClick={(e) => showAmount(e.target.value)} /></Button>
-            <Button><input type='button'value={50} onClick={(e) => showAmount(e.target.value)} /></Button>
-            <Button><input type='button'value={100} onClick={(e) => showAmount(e.target.value)} /></Button>
-            <Button><input type='button'value={200} onClick={(e) => showAmount(e.target.value)} /></Button>
+            <input type='button'value={10} onClick={(e) => showAmount(e.target.value)} />
+            <input type='button'value={20} onClick={(e) => showAmount(e.target.value)} />
+            <input type='button'value={50} onClick={(e) => showAmount(e.target.value)} />
+            <input type='button'value={100} onClick={(e) => showAmount(e.target.value)} />
+            <input type='button'value={200} onClick={(e) => showAmount(e.target.value)} />
             
             <h3>Other Amount</h3>
             <input
