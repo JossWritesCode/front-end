@@ -1,6 +1,15 @@
 import React, { useState } from "react";
-import { Navbar, SideDrawerMenu, AuthModal, LoginPage, SignupPage } from "../";
+import {
+  Navbar,
+  SideDrawerMenu,
+  AuthModal,
+  LoginPage,
+  SignupPage as RegisterPage,
+  DonationPage
+} from "../";
 import ProtectedRoute from "../utils/ProtectedRoute";
+
+import { Switch, Route, Redirect } from "react-router-dom";
 
 function App() {
   const [modalsVisibility, setModalVisibility] = useState({
@@ -8,20 +17,11 @@ function App() {
     sideDrawerMenu: false
   });
 
-  const modalsVisibilityHandler = event => {
-    console.log("clicked by", event.target);
-    const classListContainsSideDrawer = event.target.classList.value
-      .split(" ")
-      .filter(value => value.length > 0)
-      .map(value => value.split("-"))
-      .some(value => value.includes("SideDrawer"));
-    if (classListContainsSideDrawer) {
-      const newModalVisibilityState = {
-        ...modalsVisibility,
-        sideDrawerMenu: !modalsVisibility.sideDrawerMenu
-      };
-      setModalVisibility(newModalVisibilityState);
-    }
+  const modalsVisibilityHandler = (_, modalType) => {
+    setModalVisibility({
+      ...modalsVisibility,
+      [modalType]: !modalsVisibility[modalType]
+    });
   };
 
   return (
@@ -35,7 +35,24 @@ function App() {
         show={modalsVisibility.sideDrawerMenu}
       />
       <Navbar visibilityHandler={modalsVisibilityHandler} />
-      <ProtectedRoute path="/" component={LoginPage} />
+      <Switch>
+        <Route
+          path="/login"
+          render={() => {
+            return <LoginPage />;
+          }}
+        />
+        <Route
+          path="/register"
+          render={() => {
+            return <RegisterPage />;
+          }}
+        />
+
+        <Route path="/donate" render={() => <DonationPage />} />
+
+        <Route path="/" exact render={() => <Redirect to="/login" />} />
+      </Switch>
     </div>
   );
 }

@@ -1,8 +1,11 @@
 import React from "react";
 
-const Backdrop = ({ className = "", onClickHandler }) => {
+const Backdrop = ({ className = "", onClickHandler, modalType }) => {
   return (
-    <div className={`${className} Backdrop`} onClick={onClickHandler}></div>
+    <div
+      className={`${className} Backdrop`}
+      onClick={e => onClickHandler(e, modalType)}
+    ></div>
   );
 };
 
