@@ -16,20 +16,11 @@ function App() {
     sideDrawerMenu: false
   });
 
-  const modalsVisibilityHandler = event => {
-    console.log("clicked by", event.target);
-    const classListContainsSideDrawer = event.target.classList.value
-      .split(" ")
-      .filter(value => value.length > 0)
-      .map(value => value.split("-"))
-      .some(value => value.includes("SideDrawer"));
-    if (classListContainsSideDrawer) {
-      const newModalVisibilityState = {
-        ...modalsVisibility,
-        sideDrawerMenu: !modalsVisibility.sideDrawerMenu
-      };
-      setModalVisibility(newModalVisibilityState);
-    }
+  const modalsVisibilityHandler = (_, modalType) => {
+    setModalVisibility({
+      ...modalsVisibility,
+      [modalType]: !modalsVisibility[modalType]
+    });
   };
 
   return (

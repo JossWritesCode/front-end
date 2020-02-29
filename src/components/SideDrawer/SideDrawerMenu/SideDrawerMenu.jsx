@@ -7,7 +7,11 @@ const SideDrawerMenu = ({ className = "", show, visibilityHandler }) => {
         show ? "" : "hide"
       }`}
     >
-      <Backdrop className="SideDrawer" onClickHandler={visibilityHandler} />
+      <Backdrop
+        className="SideDrawer"
+        onClickHandler={visibilityHandler}
+        modalType="sideDrawerMenu"
+      />
       <Modal>
         <SideDrawerLink
           className="auth-link"
