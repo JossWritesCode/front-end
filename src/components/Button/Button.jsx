@@ -1,8 +1,13 @@
 import React from "react";
 
-const Button = ({ text = "", className = "", type = "submit" }) => {
+const Button = ({
+  text = "",
+  className = "",
+  type = "submit",
+  disabled = false
+}) => {
   return (
-    <button type={type} className={`${className} Button`}>
+    <button type={type} className={`${className} Button`} disabled={disabled}>
       {text}
     </button>
   );

@@ -1,19 +1,19 @@
 .SideDrawer {
   &-Button {
-    width: 11%;
-    height: 3vh;
-    border: 1px solid $button-white;
+    width: 45px;
+    height: 4.25vh;
+    border: 2px solid $button-white;
     display: flex;
     flex-flow: column;
     justify-content: space-evenly;
     align-items: center;
-    margin: 15px;
+    margin-left: auto;
     border-radius: 5px;
     cursor: pointer;
 
     & div {
       width: 85%;
-      height: 1px;
+      height: 2px;
       background: $background-white;
     }
   }
@@ -21,32 +21,44 @@
   &-Menu {
     justify-content: flex-end;
 
+    a {
+      text-decoration: none;
+      color: $text-dark;
+      &:first-child,
+      &:last-child {
+        border-radius: 5px;
+      }
+      &:first-child {
+        border-bottom-right-radius: unset;
+        border-bottom-left-radius: unset;
+      }
+      &:last-child {
+        border-top-right-radius: unset;
+        border-top-left-radius: unset;
+      }
+      background: $background-pink;
+
+      &:nth-child(n + 3) {
+        background: $background-white;
+      }
+    }
+
     .Modal {
-      width: 60%;
+      width: auto;
       height: 60vh;
-      top: 55px;
-      transition: all 1s;
+      top: 70px;
+      transition: all 0.75s;
       transform: translateX(0px);
     }
 
     &.hide .Modal {
-      transition: all 1s;
+      transition: all 0.75s;
       transform: translateX(500px);
     }
 
     &-link {
       font-size: 1.5rem;
       padding: 12px;
-
-      &.auth-link {
-        background: $background-pink;
-
-        &:first-child {
-          border-radius: inherit;
-          border-bottom-right-radius: unset;
-          border-bottom-left-radius: unset;
-        }
-      }
     }
   }
 }

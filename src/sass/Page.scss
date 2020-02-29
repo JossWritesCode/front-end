@@ -2,35 +2,12 @@
   background: $background-white;
 }
 
-.LoginPage {
+.LoginPage,
+.SignUpPage {
   p {
-    font-size: 0.7rem;
+    font-size: 0.95rem;
     font-family: "Alegreya Sans";
     letter-spacing: 0.03em;
     padding: 0 15px;
-  }
-
-  &-OAuth-options {
-    margin-top: 15px;
-    p {
-      display: flex;
-      justify-content: center;
-      margin: 10px 0;
-
-      &:last-child {
-        padding-bottom: 15px;
-      }
-    }
-  }
-
-  &-OAuth-icons {
-    img {
-      width: auto;
-      height: 30px;
-    }
-
-    div {
-      height: 30px;
-    }
   }
 }

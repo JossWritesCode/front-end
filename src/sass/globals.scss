@@ -19,4 +19,11 @@ a,
 
 .hide {
   z-index: -1 !important;
+  opacity: 0;
+  transition: all 0.25s 0.33s;
+}
+
+a {
+  text-decoration: none;
+  color: $text-blue;
 }
