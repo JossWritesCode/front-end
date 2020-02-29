@@ -15,6 +15,8 @@ import SignUpForm from "./Form/SignUp/SignUpForm";
 import OAuthOptions from "./OAuthOptions/OAuthOptions";
 import SignupPage from "./Pages/SignUpPage/SignUpPage";
 import SideDrawerLink from "./SideDrawer/SideDrawerLink/SideDrawerLink";
+import DonationPage from "./Pages/DonationPage/DonationPage";
+import DonateForm from "./Form/DonateForm/DonateForm";
 
 export {
   AuthModal,
@@ -33,5 +35,7 @@ export {
   SignUpForm,
   OAuthOptions,
   SignupPage,
-  SideDrawerLink
+  SideDrawerLink,
+  DonationPage,
+  DonateForm
 };
