@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Navbar,
   SideDrawerMenu,
@@ -9,7 +9,7 @@ import {
 } from "../";
 import ProtectedRoute from "../utils/ProtectedRoute";
 
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 function App() {
   const [modalsVisibility, setModalVisibility] = useState({
@@ -25,7 +25,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className='App'>
       <AuthModal
         visibilityHandler={modalsVisibilityHandler}
         show={modalsVisibility.authModal}
@@ -35,15 +35,17 @@ function App() {
         show={modalsVisibility.sideDrawerMenu}
       />
       <Navbar visibilityHandler={modalsVisibilityHandler} />
+
+      <ProtectedRoute path='/' component={DonationPage} />
       <Switch>
         <Route
-          path="/login"
+          path='/login'
           render={() => {
             return <LoginPage />;
           }}
         />
         <Route
-          path="/register"
+          path='/register'
           render={() => {
             return <RegisterPage />;
           }}
