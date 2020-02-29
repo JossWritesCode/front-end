@@ -2,6 +2,12 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { SubmitButton } from "../../";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import {
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE
+} from "../../../redux/actions/action";
 
 const LoginForm = ({ className = "", touched, errors }) => {
   return (
@@ -38,7 +44,16 @@ const enhanceForm = withFormik({
       .required("Please enter the required field")
       .min(8, null)
   }),
-  handleSubmit({ email, password }, { resetForm }) {
+  handleSubmit({ email, password }, { resetForm, history, dispatch }) {
+    dispatch({ type: LOGIN_START });
+    axiosWithAuth()
+      .post("")
+      .then(res => {
+        localStorage.setItem("token");
+        dispatch({ type: LOGIN_SUCCESS, payload: res });
+        history.push("/DonationPage");
+      })
+      .catch(err => dispatch({ LOGIN_FAILURE, payload: err }));
     // axios call here
     resetForm();
   }
