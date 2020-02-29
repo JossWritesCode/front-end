@@ -44,15 +44,15 @@
     }
 
     .Modal {
-      width: 60%;
+      width: auto;
       height: 60vh;
       top: 70px;
-      transition: all 1s;
+      transition: all 0.75s;
       transform: translateX(0px);
     }
 
     &.hide .Modal {
-      transition: all 1s;
+      transition: all 0.75s;
       transform: translateX(500px);
     }
 
