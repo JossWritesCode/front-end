@@ -14,6 +14,7 @@ import SubmitButton from "./Button/SubmitButton/SubmitButton";
 import SignUpForm from "./Form/SignUp/SignUpForm";
 import OAuthOptions from "./OAuthOptions/OAuthOptions";
 import SignupPage from "./Pages/SignUpPage/SignUpPage";
+import SideDrawerLink from "./SideDrawer/SideDrawerLink/SideDrawerLink";
 
 export {
   AuthModal,
@@ -31,5 +32,6 @@ export {
   SubmitButton,
   SignUpForm,
   OAuthOptions,
-  SignupPage
+  SignupPage,
+  SideDrawerLink
 };

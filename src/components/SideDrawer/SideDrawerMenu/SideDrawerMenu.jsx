@@ -1,5 +1,5 @@
 import React from "react";
-import { Backdrop, Modal } from "../../";
+import { Backdrop, Modal, SideDrawerLink } from "../../";
 const SideDrawerMenu = ({ className = "", show, visibilityHandler }) => {
   return (
     <div
@@ -9,15 +9,25 @@ const SideDrawerMenu = ({ className = "", show, visibilityHandler }) => {
     >
       <Backdrop className="SideDrawer" onClickHandler={visibilityHandler} />
       <Modal>
-        <div className="SideDrawer-Menu-link auth-link">Create an Account</div>
-        <div className="SideDrawer-Menu-link auth-link">Login</div>
-        <div className="SideDrawer-Menu-link">Events</div>
-        <div className="SideDrawer-Menu-link">About Us</div>
-        <div className="SideDrawer-Menu-link">Our Story</div>
-        <div className="SideDrawer-Menu-link">How To Donate</div>
-        <div className="SideDrawer-Menu-link">Supporters</div>
-        <div className="SideDrawer-Menu-link">Creators</div>
-        <div className="SideDrawer-Menu-link">Contact Us</div>
+        <SideDrawerLink
+          className="auth-link"
+          text="Create an Account"
+          to="/register"
+          onClickHandler={visibilityHandler}
+        />
+        <SideDrawerLink
+          className="auth-link"
+          text="Login"
+          to="/login"
+          onClickHandler={visibilityHandler}
+        />
+        <SideDrawerLink text="Events" />
+        <SideDrawerLink text="About Us" />
+        <SideDrawerLink text="Our Story" />
+        <SideDrawerLink text="How to Donate" />
+        <SideDrawerLink text="Supporters" />
+        <SideDrawerLink text="Creators" />
+        <SideDrawerLink text="Contact Us" />
       </Modal>
     </div>
   );
