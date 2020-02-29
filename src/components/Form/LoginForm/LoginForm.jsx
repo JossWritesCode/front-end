@@ -6,7 +6,7 @@ import { SubmitButton } from "../../";
 const LoginForm = ({ className = "", touched, errors }) => {
   return (
     <div className={`${className} FormContainer`}>
-      <Form className="LoginForm">
+      <Form className="Form">
         <label>
           Email
           <Field type="email" name="email" />

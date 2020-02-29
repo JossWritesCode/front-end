@@ -4,7 +4,8 @@ import {
   SideDrawerMenu,
   AuthModal,
   LoginPage,
-  SignupPage as RegisterPage
+  SignupPage as RegisterPage,
+  DonationPage
 } from "../";
 import ProtectedRoute from "../utils/ProtectedRoute";
 
@@ -47,6 +48,8 @@ function App() {
             return <RegisterPage />;
           }}
         />
+
+        <Route path="/donate" render={() => <DonationPage />} />
 
         <Route path="/" exact render={() => <Redirect to="/login" />} />
       </Switch>
