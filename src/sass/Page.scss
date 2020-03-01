@@ -9,6 +9,10 @@
     font-size: 0.95rem;
     font-family: "Alegreya Sans";
     letter-spacing: 0.03em;
-    padding: 0 15px;
+    padding: 0 4%;
+
+    @media (min-width: 700px) {
+      padding: 0 10%;
+    }
   }
 }

@@ -1,8 +1,13 @@
 .Header {
   background: $background-gray;
   color: $titles-white;
-  padding: 30px 15px 20px;
+  padding: 30px 4% 20px;
   font-size: 1.5rem;
   font-family: "Yanone Kaffeesatz";
   letter-spacing: 0.1em;
+
+  @media (min-width: 700px) {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 }
