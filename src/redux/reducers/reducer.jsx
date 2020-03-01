@@ -7,38 +7,55 @@ import {
   SIGNUP_START,
   SIGNUP_SUCCESS,
   SIGNUP_FAILURE
-} from '../actions/action';
+} from "../actions/action";
 
 export const initialState = {
-  donationAmount: 0,
-  button: [
-    { id: 1, price: 5 },
-    { id: 2, price: 10 },
-    { id: 3, price: 20 },
-    { id: 4, price: 50 },
-    { id: 5, price: 100 },
-    { id: 6, price: 200 }
-  ],
+  user: {
+    // this information needs to be loaded if authed
+    token: null,
+    name: null,
+    donation: {
+      // pulled in from the donate form
+      amount: 0 // will update onClick with button or when user types an amount in
+    },
+    // payment is the object containing information which will be selected on another screen
+    payment: {
+      method: null,
+      account: null
+    }
+  },
   loading: false,
-  error: '',
+  error: "",
   userInfo: {
-    email: '',
-    password: '',
-    comfirmPassword: ''
+    // don't save this information, it is available inside the login/sign up/donate form
+    email: "",
+    password: "",
+    comfirmPassword: ""
   }
 };
 
 export const rootReducer = (state = initialState, action) => {
+  // reducers need to be split due to complexity and so that we can group them with related actions
   switch (action.type) {
     case INCREASE_DONATION:
       return {
         ...state,
-        donationAmount: state.donationAmount + action.payload.price
+        user: {
+          ...state.user,
+          donation: {
+            amount: state.user.donation.amount + action.payload.price 
+          }
+        }
       };
     case CLEAR_DONATION:
       return {
         ...state,
-        donationAmount: state.donationAmount - action.payload.price
+        user: {
+          ...state.user,
+          donation: {
+            amount: 0 // setting to 0 is easier than subtracting
+          }
+        }
       };
     case LOGIN_START:
       return {
@@ -54,6 +71,7 @@ export const rootReducer = (state = initialState, action) => {
     case LOGIN_FAILURE:
       return {
         ...state,
+        loading: false,
         error: action.payload
       };
     case SIGNUP_START:
@@ -70,6 +88,7 @@ export const rootReducer = (state = initialState, action) => {
     case SIGNUP_FAILURE:
       return {
         ...state,
+        loading: false,
         error: action.payload
       };
 
