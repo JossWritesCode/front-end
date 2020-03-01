@@ -61,7 +61,7 @@ const enhanceForm = withFormik({
       "Passwords must match"
     )
   }),
-  handleSubmit({ email, password, verify, ...rest }, { resetForm, history }) {
+  handleSubmit({ email, password, verify }, { resetForm, history }) {
     // axios call goes here
     axiosWithAuth()
       .post("")
@@ -76,5 +76,4 @@ const enhanceForm = withFormik({
 function mapStateToProps(state) {
   return state;
 }
-export default connect(mapStateToProps, {})(SignUpForm);
-enhanceForm(SignUpForm);
+export default connect(mapStateToProps, {})(enhanceForm(SignUpForm));
