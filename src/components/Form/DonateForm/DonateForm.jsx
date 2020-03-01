@@ -66,7 +66,7 @@ const enhanceForm = withFormik({
     // so this is what's going to happen, donation form simply passes data back into redux store to store the amount. The confirmation modal is another form
     visibilityHandler(null, "confirmationModal");
     resetForm();
-    resetButtons();
+    // resetButtons(); will be used inside the modal or not reset at all
   }
 });
 
