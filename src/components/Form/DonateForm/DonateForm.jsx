@@ -34,14 +34,7 @@ const DonateForm = ({
 
   return (
     <div className="FormContainer">
-      <ConfirmationModalContainer
-        name="Bion Gator"
-        method="Credit Card"
-        account="xxxx-xxxx-xxxx-5690"
-        amount="150.00"
-        visibilityHandler={visibilityHandler}
-        show={show}
-      />
+      
       <Form className="Form Donation">
         <p>Choose an amount:</p>
         <div>{amountButtons}</div>

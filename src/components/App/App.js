@@ -20,7 +20,6 @@ function App() {
   });
 
   const modalsVisibilityHandler = (_, modalType) => {
-    console.log("firing");
     setModalVisibility({
       ...modalsVisibility,
       [modalType]: !modalsVisibility[modalType]
@@ -37,8 +36,15 @@ function App() {
         visibilityHandler={modalsVisibilityHandler}
         show={modalsVisibility.sideDrawerMenu}
       />
+      <ConfirmationModalContainer
+        name="Bion Gator"
+        method="Credit Card"
+        account="xxxx-xxxx-xxxx-5690"
+        amount="150.00"
+        visibilityHandler={modalsVisibilityHandler}
+        show={modalsVisibility.confirmationModal}
+      />
       <Navbar visibilityHandler={modalsVisibilityHandler} />
-
       {/* <ProtectedRoute path='/' component={DonationPage} /> */}
       <Switch>
         <Route
