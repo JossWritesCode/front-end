@@ -33,8 +33,7 @@ const DonateForm = ({
   });
 
   return (
-    <div className="FormContainer">
-      
+    <div className="FormContainer Donation">
       <Form className="Form Donation">
         <p>Choose an amount:</p>
         <div>{amountButtons}</div>
