@@ -2,12 +2,12 @@ import React from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { SubmitButton } from '../../';
-import axiosWithAuth from '../../utils/axiosWithAuth';
+import {axiosWithAuth} from '../../utils/axiosWithAuth';
 import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAILURE
-} from '../../../redux/actions';
+} from '../../../redux/actionCreators/actions';
 
 const LoginForm = ({ className = '', touched, errors }) => {
   return (

@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import Header from '../Header/Header'
 import {useDispatch} from 'react-redux';
 import {initialState, rootReducer} from '../../redux/reducers/reducer'
-import {donateMoney} from '../../redux/actions/action'
+import {donateMoney} from '../../redux/actionCreators/actions/action'
 import {useSelector} from 'react-redux'
 import {Button}from '..'
 import DonateButton from '../Button/DonateButton/DonateButton'
