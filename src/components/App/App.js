@@ -60,6 +60,9 @@ function App() {
           }}
         />
 
+<<<<<<< HEAD
+        <Route path="/donate" render={() => <DonationPage />} />
+=======
         <Route
           path="/donate"
           render={() => (
@@ -69,6 +72,7 @@ function App() {
             />
           )}
         />
+>>>>>>> 3fdb9fd034123de9b2cc5f58b02f5e6be758d58f
 
         <Route path="/" exact render={() => <Redirect to="/login" />} />
       </Switch>

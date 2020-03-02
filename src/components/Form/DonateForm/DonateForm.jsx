@@ -21,6 +21,7 @@ const DonateForm = ({
       resetButtons();
     }
   }, [values.amount]);
+  
   const amountButtons = Object.keys(buttons).map(key => {
     const object = buttons[key];
     return (
