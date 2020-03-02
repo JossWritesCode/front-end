@@ -50,7 +50,7 @@
   flex-flow: column wrap;
   width: 80%;
   height: auto;
-  margin-top: 35%;
+  margin-top: 50px;
 
   header {
     width: 100%;
@@ -66,8 +66,8 @@
     display: flex;
     justify-content: center;
     flex-flow: column;
+    padding: 0 10%;
     & > div {
-      padding: 0 15px;
       padding-top: 20px;
       letter-spacing: 0.1em;
       font-size: 1.1rem;
@@ -83,6 +83,14 @@
           width: 30%;
         }
       }
+    }
+  }
+
+  @media (min-width: 700px) {
+    width: 60%;
+
+    &-information {
+      padding: 0 15%;
     }
   }
 }
