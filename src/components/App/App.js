@@ -60,7 +60,12 @@ function App() {
           }}
         />
 
-        <Route path="/donate" render={() => <DonationPage />} />
+        <Route
+          path="/donate"
+          render={() => (
+            <DonationPage visibilityHandler={modalsVisibilityHandler} />
+          )}
+        />
 
         <Route path="/" exact render={() => <Redirect to="/login" />} />
       </Switch>
