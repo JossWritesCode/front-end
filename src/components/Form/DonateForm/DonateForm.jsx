@@ -12,16 +12,20 @@ const DonateForm = ({
   touched,
   errors,
   values,
-  resetButtons,
-  show,
-  visibilityHandler
+  resetButtons
 }) => {
   useEffect(() => {
     if (values.amount !== "" || values.amount.toString().length > 0) {
       resetButtons();
     }
   }, [values.amount]);
-  
+
+  const updatedClickHandler = e => {
+    if (values.amount !== "" || values.amount.toString().length > 0) {
+      values.amount = "";
+    }
+    clickHandler(e);
+  };
   const amountButtons = Object.keys(buttons).map(key => {
     const object = buttons[key];
     return (
@@ -34,7 +38,7 @@ const DonateForm = ({
             : ""
         }`}
         key={key}
-        clickHandler={clickHandler}
+        clickHandler={e => updatedClickHandler(e)}
         id={key}
       />
     );
@@ -76,10 +80,7 @@ const enhanceForm = withFormik({
     return { amount, monthly };
   },
   validationSchema: Yup.object().shape({
-    amount: Yup.string().matches(
-      /^[\d]*\.[\d]{2}$/gi,
-      "Please enter something like: 123.00 or 123.45"
-    )
+    amount: Yup.string()
   }),
   handleSubmit(
     { amount, monthly },
