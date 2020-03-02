@@ -1,5 +1,5 @@
 import {
-  INCREASE_DONATION,
+  UPDATE_DONATION_AMOUNT,
   CLEAR_DONATION,
   LOGIN_START,
   LOGIN_SUCCESS,
@@ -16,7 +16,8 @@ export const initialState = {
     name: null,
     donation: {
       // pulled in from the donate form
-      amount: 0 // will update onClick with button or when user types an amount in
+      amount: 0, // will update onClick with button or when user types an amount in
+      monthly: false
     },
     // payment is the object containing information which will be selected on another screen
     payment: {
@@ -37,13 +38,13 @@ export const initialState = {
 export const rootReducer = (state = initialState, action) => {
   // reducers need to be split due to complexity and so that we can group them with related actions
   switch (action.type) {
-    case INCREASE_DONATION:
+    case UPDATE_DONATION_AMOUNT:
       return {
         ...state,
         user: {
           ...state.user,
           donation: {
-            amount: state.user.donation.amount + action.payload.price 
+            amount: action.payload
           }
         }
       };
