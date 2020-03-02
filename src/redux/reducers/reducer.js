@@ -6,10 +6,23 @@ import {
   LOGIN_FAILURE,
   SIGNUP_START,
   SIGNUP_SUCCESS,
-  SIGNUP_FAILURE
+  SIGNUP_FAILURE,
+  SHOW_MODAL,
+  HIDE_MODAL
 } from "../actions/action";
 
 export const initialState = {
+  modal: {
+    confirmationModal: {
+      show: false
+    },
+    authModal: {
+      show: false
+    },
+    sideMenuModal: {
+      show: false
+    }
+  },
   user: {
     // this information needs to be loaded if authed
     token: null,
@@ -57,6 +70,16 @@ export const rootReducer = (state = initialState, action) => {
             amount: 0 // setting to 0 is easier than subtracting
           }
         }
+      };
+    case SHOW_MODAL:
+      return {
+        ...state,
+        modal: { ...state.modal, [action.payload]: { show: true } }
+      };
+    case HIDE_MODAL:
+      return {
+        ...state,
+        modal: { ...state.modal, [action.payload]: { show: false } }
       };
     case LOGIN_START:
       return {
