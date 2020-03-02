@@ -7,7 +7,7 @@ import { register } from "../../../redux/actionCreators";
 const SignUpForm = ({ className = "", touched, errors }) => {
   return (
     <div className={`${className} FormContainer`}>
-      <Form className="Form">
+      <Form className="Form Register">
         <label>
           Email
           <Field type="email" name="email" />
@@ -25,6 +25,11 @@ const SignUpForm = ({ className = "", touched, errors }) => {
           <p>{touched.verify && errors.verify}</p>
         </label>
 
+        <label>
+          <Field type="checkbox" name="isDonor" />
+          <p>Are you a donator?</p>
+        </label>
+
         <SubmitButton
           disabled={
             Object.keys(touched).length === 0 || Object.keys(errors).length > 0
@@ -36,11 +41,17 @@ const SignUpForm = ({ className = "", touched, errors }) => {
 };
 
 const enhanceForm = withFormik({
-  mapPropsToValues({ email = "", password = "", verify = "" }) {
+  mapPropsToValues({
+    email = "",
+    password = "",
+    verify = "",
+    isDonor = false
+  }) {
     return {
       email,
       password,
-      verify
+      verify,
+      isDonor
     };
   },
   validationSchema: Yup.object().shape({
@@ -62,7 +73,7 @@ const enhanceForm = withFormik({
     )
   }),
   handleSubmit(
-    { email, password, verify },
+    { email, password, verify, isDonor },
     { resetForm, props: { register, history } }
   ) {
     // axios call goes here
@@ -73,8 +84,8 @@ const enhanceForm = withFormik({
     //     history.push("/login");
     //   })
     //   .catch(err => console.log(err));
-    const credentials = {email, password}
-    register(credentials)
+    const credentials = { email, password, isDonor };
+    register(credentials);
     resetForm();
   }
 });
