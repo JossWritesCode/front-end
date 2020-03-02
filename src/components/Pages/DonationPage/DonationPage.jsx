@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Header, DonateButton } from "../../";
 import { DonateForm } from "../../";
+import { connect } from "react-redux";
+import { updateAmount } from "../../../redux/actionCreators/donationCreators";
 
 const initialState = {
   1: { amount: 5, active: false },
@@ -11,23 +13,28 @@ const initialState = {
   6: { amount: 200, active: false }
 };
 
-const DonationPage = ({ show, visibilityHandler }) => {
+const DonationPage = ({ show, visibilityHandler, updateAmount, amount }) => {
   const [buttons, setButtons] = useState({ ...initialState });
 
   const resetButtons = () => {
     setButtons({ ...initialState });
   };
   const clickHandler = ({ target: { id } }) => {
-    const button = { ...buttons[id], active: true };
+    const button = { ...buttons[id] };
+    updateAmount(button.amount);
+    // amount is now updated
 
-    const allFalseButtons = Object.keys(buttons).reduce((prev, next) => {
-      return { ...prev, [next]: { ...buttons[next], active: false } };
-    }, {});
+    // now to update the buttons to all false
+    const allFalseButtons = initialState;
+
+    // once all buttons are false, pick the button with that amount to be true
 
     setButtons({
       ...allFalseButtons,
-      [id]: { ...button }
+      [id]: { ...button, active: true }
     });
+
+    console.log(amount);
   };
 
   return (
@@ -44,4 +51,10 @@ const DonationPage = ({ show, visibilityHandler }) => {
   );
 };
 
-export default DonationPage;
+const mapStateToProps = ({
+  user: {
+    donation: { amount }
+  }
+}) => ({ amount });
+
+export default connect(mapStateToProps, { updateAmount })(DonationPage);
