@@ -8,7 +8,7 @@ const LoadingModal = ({ phase, active }) => {
       <Backdrop />
       <Modal>
         <Loader />
-        <p>{phase}</p>
+        <p className="loader-text">{phase}</p>
       </Modal>
     </div>
   );
