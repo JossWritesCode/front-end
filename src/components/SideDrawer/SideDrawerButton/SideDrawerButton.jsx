@@ -1,10 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
+import { showModal } from "../../../redux/actionCreators/modalVisibilityCreators";
 
-const SideDrawerButton = ({ className = "", onClickHandler }) => {
+const SideDrawerButton = ({ className = "", showModal }) => {
   return (
     <div
       className={`${className} SideDrawer-Button`}
-      onClick={e => onClickHandler(e, "sideDrawerMenu")}
+      onClick={() => showModal("sideMenuModal")}
     >
       <div></div>
       <div></div>
@@ -13,4 +15,4 @@ const SideDrawerButton = ({ className = "", onClickHandler }) => {
   );
 };
 
-export default SideDrawerButton;
+export default connect(null, { showModal })(SideDrawerButton);

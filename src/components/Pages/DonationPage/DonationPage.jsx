@@ -13,7 +13,7 @@ const initialState = {
   6: { amount: 200, active: false }
 };
 
-const DonationPage = ({ show, visibilityHandler, updateAmount, amount }) => {
+const DonationPage = ({ updateAmount }) => {
   const [buttons, setButtons] = useState({ ...initialState });
 
   const resetButtons = () => {
@@ -39,8 +39,6 @@ const DonationPage = ({ show, visibilityHandler, updateAmount, amount }) => {
     <div className="DonationPage Page">
       <Header title="Donate Now" />
       <DonateForm
-        show={show}
-        visibilityHandler={visibilityHandler}
         buttons={buttons}
         clickHandler={clickHandler}
         resetButtons={resetButtons}

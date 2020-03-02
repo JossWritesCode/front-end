@@ -9,7 +9,7 @@ const Navbar = ({ className = "", visibilityHandler }) => {
         <div>insight.culture.passion</div>
       </div>
 
-      <SideDrawerButton onClickHandler={visibilityHandler} />
+      <SideDrawerButton />
     </div>
   );
 };

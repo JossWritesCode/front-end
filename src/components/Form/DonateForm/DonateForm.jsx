@@ -3,8 +3,7 @@ import { withFormik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
 import { Button, DonateButton } from "../../";
-
-import { updateAmount } from "../../../redux/actionCreators/donationCreators";
+import { showModal, updateAmount } from "../../../redux/actionCreators/";
 
 const DonateForm = ({
   buttons,
@@ -84,21 +83,12 @@ const enhanceForm = withFormik({
   }),
   handleSubmit(
     { amount, monthly },
-    {
-      props: {
-        buttons,
-        resetButtons,
-        visibilityHandler,
-        updateAmount,
-        amount: reduxAmount
-      },
-      resetForm
-    }
+    { props: { updateAmount, showModal, amount: reduxAmount } }
   ) {
     // so this is what's going to happen, donation form simply passes data back into redux store to store the amount. The confirmation modal is another form
     const donationAmount = amount ? amount : reduxAmount;
     updateAmount(donationAmount);
-    visibilityHandler(null, "confirmationModal");
+    showModal("confirmationModal");
   }
 });
 const mapStateToProps = ({
@@ -107,7 +97,7 @@ const mapStateToProps = ({
   }
 }) => ({ amount, monthly });
 
-const mapDispatchToProps = { updateAmount };
+const mapDispatchToProps = { updateAmount, showModal };
 
 export default connect(
   mapStateToProps,

@@ -1,31 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Modal, Backdrop, DonateButton } from "../../";
+import { hideModal } from "../../../redux/actionCreators";
 
-const AuthModal = ({
+const ConfirmationModal = ({
   className = "",
   name,
   method,
   account,
   amount,
-  show,
-  visibilityHandler
+  show
 }) => {
   const handleSubmit = event => {
     event.stopPropagation();
     event.preventDefault();
-
-    /**
-     * Requires some redux action to send data payload
-     * {
-     *  name,
-     *  method,
-     *  account,
-     *  amount
-     * }
-     */
-
-    visibilityHandler(null, "confirmationModal");
+    hideModal("confirmationModal");
   };
 
   return (
@@ -35,10 +24,7 @@ const AuthModal = ({
           show ? "" : "hide"
         }`}
       >
-        <Backdrop
-          onClickHandler={visibilityHandler}
-          modalType="confirmationModal"
-        />
+        <Backdrop modalType="confirmationModal" />
         <Modal className="ConfirmationModal">
           <header>Confirmation</header>
           <div className="ConfirmationModal-information">
@@ -71,7 +57,12 @@ const mapStateToProps = ({
     name,
     donation: { amount },
     payment: { method, account }
+  },
+  modal: {
+    confirmationModal: { show }
   }
-}) => ({ name, amount, account, method });
+}) => ({ name, amount, account, method, show });
 
-export default connect(mapStateToProps, null)(AuthModal);
+const mapDispatchToProps = { hideModal };
+
+export default connect(mapStateToProps, mapDispatchToProps)(ConfirmationModal);
