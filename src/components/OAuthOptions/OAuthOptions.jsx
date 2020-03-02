@@ -14,13 +14,13 @@ const OAuthOptions = ({ mode }) => {
       <div className="OAuthOptions">
         <p>{mode ? "Sign up" : "Login"}</p>
         <p>with your Social Media Account</p>
-        <p className="OAuthOptions-icons">
+        <div className="OAuthOptions-icons">
           <FacebookIcon color="primary" />
           <TwitterIcon color="primary" />
           <div>
-            <img src={GoogleIcon} alt="google-icon" srcset="" />
+            <img src={GoogleIcon} alt="google-icon" />
           </div>
-        </p>
+        </div>
       </div>
     </>
   );
