@@ -86,3 +86,17 @@
     }
   }
 }
+
+.ModalContainer {
+  &.Loader {
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    .Modal {
+      width: 80%;
+      align-items: center;
+      padding: 50px 0;
+    }
+  }
+}

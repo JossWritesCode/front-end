@@ -18,6 +18,8 @@ import SideDrawerLink from "./SideDrawer/SideDrawerLink/SideDrawerLink";
 import DonationPage from "./Pages/DonationPage/DonationPage";
 import DonateForm from "./Form/DonateForm/DonateForm";
 import ConfirmationModalContainer from "./Modal/ConfirmationModalContainer/ConfirmationModalContainer";
+import Loader from "./Loader/Loader";
+import LoadingModal from "./Modal/LoadingModal/LoadingModal";
 
 export {
   AuthModal,
@@ -39,5 +41,7 @@ export {
   SideDrawerLink,
   DonationPage,
   DonateForm,
-  ConfirmationModalContainer
+  ConfirmationModalContainer,
+  Loader,
+  LoadingModal
 };

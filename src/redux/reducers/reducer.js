@@ -42,7 +42,10 @@ export const initialState = {
   auth: {
     errors: ""
   },
-  loading: false
+  loading: {
+    phase: "",
+    active: false
+  }
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -81,12 +84,18 @@ export const rootReducer = (state = initialState, action) => {
     case LOGIN_START:
       return {
         ...state,
-        loading: true
+        loading: {
+          phase: "Logging in...",
+          active: true
+        }
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
-        loading: false,
+        loading: {
+          phase: "",
+          active: false
+        },
         user: {
           ...state.user,
           model: action.payload
@@ -95,18 +104,27 @@ export const rootReducer = (state = initialState, action) => {
     case LOGIN_FAILURE:
       return {
         ...state,
-        loading: false,
+        loading: {
+          phase: "",
+          active: false
+        },
         auth: { errors: action.payload }
       };
     case REGISTER_START:
       return {
         ...state,
-        loading: true
+        loading: {
+          phase: "Registering...",
+          active: true
+        }
       };
     case REGISTER_SUCCESS:
       return {
         ...state,
-        loading: false,
+        loading: {
+          phase: "",
+          active: false
+        },
         user: {
           ...state.user,
           model: action.payload.data
@@ -115,7 +133,10 @@ export const rootReducer = (state = initialState, action) => {
     case REGISTER_FAILURE:
       return {
         ...state,
-        loading: false,
+        loading: {
+          phase: "",
+          active: false
+        },
         auth: { errors: action.payload }
       };
 
