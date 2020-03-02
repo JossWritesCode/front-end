@@ -1,25 +1,13 @@
-<<<<<<< HEAD
-import React from 'react';
-import { withFormik, Form, Field } from 'formik';
-import * as Yup from 'yup';
-import { SubmitButton } from '../../';
-import {axiosWithAuth} from '../../utils/axiosWithAuth';
-=======
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { SubmitButton } from "../../";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
->>>>>>> 3fdb9fd034123de9b2cc5f58b02f5e6be758d58f
 import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAILURE
-<<<<<<< HEAD
-} from '../../../redux/actionCreators/actions';
-=======
 } from "../../../redux/actions/action";
->>>>>>> 3fdb9fd034123de9b2cc5f58b02f5e6be758d58f
 
 const LoginForm = ({ className = "", touched, errors }) => {
   return (
