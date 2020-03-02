@@ -14,10 +14,17 @@
   }
   &-icons {
     width: 80%;
+    margin: 0 auto;
     margin-top: 25px;
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 25px;
     img {
       width: auto;
       height: 25px;
+    }
+
+    div {
     }
   }
 }
