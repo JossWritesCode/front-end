@@ -33,8 +33,6 @@ const DonationPage = ({ show, visibilityHandler, updateAmount, amount }) => {
       ...allFalseButtons,
       [id]: { ...button, active: true }
     });
-
-    console.log(amount);
   };
 
   return (
