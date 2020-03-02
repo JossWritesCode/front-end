@@ -1,16 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-const SideDrawerLink = ({ text, className = "", to = "#", onClickHandler }) => {
+import { connect } from "react-redux";
+import { hideModal } from "../../../redux/actionCreators/modalVisibilityCreators";
+const SideDrawerLink = ({ text, className = "", to = "#" }) => {
   return (
-    <Link
-      to={to}
-      className="link"
-      onClick={e => onClickHandler(e, "sideDrawerMenu")}
-    >
-      <div className={`${className} SideDrawer-Menu-link`}>{text}</div>;
-    </Link>
+    <div className={`${className} SideDrawer-Menu-link`}>
+      <Link to={to} className="link">
+        {text}
+      </Link>
+    </div>
   );
 };
 
-export default SideDrawerLink;
+export default connect(null, { hideModal })(SideDrawerLink);

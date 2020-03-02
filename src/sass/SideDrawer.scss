@@ -24,28 +24,16 @@
     a {
       text-decoration: none;
       color: $text-dark;
-      &:first-child,
-      &:last-child {
-        border-radius: 5px;
-      }
-      &:first-child {
-        border-bottom-right-radius: unset;
-        border-bottom-left-radius: unset;
-      }
-      &:last-child {
-        border-top-right-radius: unset;
-        border-top-left-radius: unset;
-      }
-      background: $background-pink;
-
-      &:nth-child(n + 3) {
-        background: $background-white;
-      }
+      width: 100%;
+      height: 100%;
+      padding: 12px;
+      display: block;
     }
 
     .Modal {
-      width: auto;
-      height: 60vh;
+      width: 35%;
+      height: 70%;
+      flex-flow: row wrap;
       top: 70px;
       transition: all 0.75s;
       transform: translateX(0px);
@@ -58,7 +46,25 @@
 
     &-link {
       font-size: 1.5rem;
-      padding: 12px;
+      width: 100%;
+      height: auto;
+
+      &.auth-link {
+        background: $background-pink;
+      }
+
+      &:first-child,
+      &:last-child {
+        border-radius: 5px;
+      }
+      &:first-child {
+        border-bottom-right-radius: unset;
+        border-bottom-left-radius: unset;
+      }
+      &:last-child {
+        border-top-right-radius: unset;
+        border-top-left-radius: unset;
+      }
     }
   }
 }
