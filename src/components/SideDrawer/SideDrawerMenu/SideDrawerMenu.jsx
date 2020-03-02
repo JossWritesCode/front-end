@@ -28,7 +28,11 @@ const SideDrawerMenu = ({ className = "", show, visibilityHandler }) => {
         <SideDrawerLink text="Events" />
         <SideDrawerLink text="About Us" />
         <SideDrawerLink text="Our Story" />
-        <SideDrawerLink text="How to Donate" />
+        <SideDrawerLink
+          text="How to Donate"
+          to="/donate"
+          onClickHandler={visibilityHandler}
+        />
         <SideDrawerLink text="Supporters" />
         <SideDrawerLink text="Creators" />
         <SideDrawerLink text="Contact Us" />

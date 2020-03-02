@@ -17,6 +17,7 @@ import SignupPage from "./Pages/SignUpPage/SignUpPage";
 import SideDrawerLink from "./SideDrawer/SideDrawerLink/SideDrawerLink";
 import DonationPage from "./Pages/DonationPage/DonationPage";
 import DonateForm from "./Form/DonateForm/DonateForm";
+import ConfirmationModalContainer from "./Modal/ConfirmationModalContainer/ConfirmationModalContainer";
 
 export {
   AuthModal,
@@ -37,5 +38,6 @@ export {
   SignupPage,
   SideDrawerLink,
   DonationPage,
-  DonateForm
+  DonateForm,
+  ConfirmationModalContainer
 };

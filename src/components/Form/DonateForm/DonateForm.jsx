@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { withFormik, Field, Form } from "formik";
 import * as Yup from "yup";
-import { Button, DonateButton } from "../../";
+import { Button, DonateButton, ConfirmationModalContainer } from "../../";
 
 const DonateForm = ({
   buttons,
@@ -9,7 +9,9 @@ const DonateForm = ({
   touched,
   errors,
   values,
-  resetButtons
+  resetButtons,
+  show,
+  visibilityHandler
 }) => {
   useEffect(() => {
     resetButtons();
@@ -32,7 +34,7 @@ const DonateForm = ({
   });
 
   return (
-    <div className="FormContainer">
+    <div className="FormContainer Donation">
       <Form className="Form Donation">
         <p>Choose an amount:</p>
         <div>{amountButtons}</div>
@@ -60,10 +62,12 @@ const enhanceForm = withFormik({
   }),
   handleSubmit(
     { amount, monthly },
-    { props: { buttons, resetButtons }, resetForm }
+    { props: { buttons, resetButtons, visibilityHandler }, resetForm }
   ) {
+    // so this is what's going to happen, donation form simply passes data back into redux store to store the amount. The confirmation modal is another form
+    visibilityHandler(null, "confirmationModal");
     resetForm();
-    resetButtons();
+    // resetButtons(); will be used inside the modal or not reset at all
   }
 });
 
