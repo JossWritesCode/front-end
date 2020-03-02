@@ -2,8 +2,8 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { SubmitButton } from "../../";
-import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { connect } from "react-redux";
+import { register } from "../../../redux/actionCreators";
 const SignUpForm = ({ className = "", touched, errors }) => {
   return (
     <div className={`${className} FormContainer`}>
@@ -61,19 +61,24 @@ const enhanceForm = withFormik({
       "Passwords must match"
     )
   }),
-  handleSubmit({ email, password, verify }, { resetForm, history }) {
+  handleSubmit(
+    { email, password, verify },
+    { resetForm, props: { register, history } }
+  ) {
     // axios call goes here
-    axiosWithAuth()
-      .post("")
-      .then(res => {
-        console.log(res);
-        history.push("/login");
-      })
-      .catch(err => console.log(err));
+    // axiosWithAuth()
+    //   .post("")
+    //   .then(res => {
+    //     console.log(res);
+    //     history.push("/login");
+    //   })
+    //   .catch(err => console.log(err));
+    const credentials = {email, password}
+    register(credentials)
     resetForm();
   }
 });
 function mapStateToProps(state) {
   return state;
 }
-export default connect(mapStateToProps, {})(enhanceForm(SignUpForm));
+export default connect(mapStateToProps, { register })(enhanceForm(SignUpForm));
