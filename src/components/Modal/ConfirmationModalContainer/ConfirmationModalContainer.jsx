@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Modal, Backdrop, DonateButton } from "../../";
 
 const AuthModal = ({
@@ -65,4 +66,12 @@ const AuthModal = ({
   );
 };
 
-export default AuthModal;
+const mapStateToProps = ({
+  user: {
+    name,
+    donation: { amount },
+    payment: { method, account }
+  }
+}) => ({ name, amount, account, method });
+
+export default connect(mapStateToProps, null)(AuthModal);
