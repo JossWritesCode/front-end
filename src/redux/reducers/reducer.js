@@ -4,9 +4,9 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  SIGNUP_START,
-  SIGNUP_SUCCESS,
-  SIGNUP_FAILURE,
+  REGISTER_START,
+  REGISTER_SUCCESS,
+  REGISTER_FAILURE,
   SHOW_MODAL,
   HIDE_MODAL
 } from "../actions/action";
@@ -24,6 +24,7 @@ export const initialState = {
     }
   },
   user: {
+    model: null,
     // this information needs to be loaded if authed
     token: null,
     name: null,
@@ -38,18 +39,14 @@ export const initialState = {
       account: null
     }
   },
-  loading: false,
-  error: "",
-  userInfo: {
-    // don't save this information, it is available inside the login/sign up/donate form
-    email: "",
-    password: "",
-    comfirmPassword: ""
-  }
+  auth: {
+    errors: ""
+  },
+  loading: false
 };
 
 export const rootReducer = (state = initialState, action) => {
-  // reducers need to be split due to complexity and so that we can group them with related actions
+  // reducers need to be split due to complexity and we can group them with related actions to simplify this reducer
   switch (action.type) {
     case UPDATE_DONATION_AMOUNT:
       return {
@@ -90,30 +87,36 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        userInfo: action.payload
+        user: {
+          ...state.user,
+          model: action.payload
+        }
       };
     case LOGIN_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.payload
+        auth: { errors: action.payload }
       };
-    case SIGNUP_START:
+    case REGISTER_START:
       return {
         ...state,
         loading: true
       };
-    case SIGNUP_SUCCESS:
+    case REGISTER_SUCCESS:
       return {
         ...state,
         loading: false,
-        userInfo: action.payload
+        user: {
+          ...state.user,
+          model: action.payload.data
+        }
       };
-    case SIGNUP_FAILURE:
+    case REGISTER_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.payload
+        auth: { errors: action.payload }
       };
 
     default:
