@@ -57,6 +57,21 @@
     width: 100%;
     flex-flow: wrap;
     justify-content: space-evenly;
+    @media (min-width: 525px) {
+      padding: 0 8%;
+    }
+
+    @media (min-width: 620px) {
+      padding: 0 12%;
+    }
+
+    @media (min-width: 700px) {
+      padding: 0 20%;
+    }
+
+    @media (min-width: 1000px) {
+      padding: 0 25%;
+    }
   }
 
   .box {
