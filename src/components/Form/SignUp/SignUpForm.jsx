@@ -82,7 +82,9 @@ const enhanceForm = compose(
       { resetForm, props: { register, history } }
     ) {
       const credentials = { username: email, password, isDonater: isDonor };
-      register(credentials);
+      register(credentials).then(() => {
+        history.push("/donate");
+      });
       resetForm();
     }
   })
