@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { compose } from "redux";
 
-const LoginForm = ({ className = "", touched, errors, authError }) => {
+const LoginForm = ({ className = "", touched, errors }) => {
   return (
     <div className={`${className} FormContainer`}>
       <Form className="Form">
