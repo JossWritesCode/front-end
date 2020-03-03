@@ -1,9 +1,13 @@
 import React from "react";
-
-const Backdrop = ({ className = "", onClickHandler }) => {
+import { connect } from "react-redux";
+import { hideModal } from "../../redux/actionCreators/modalVisibilityCreators";
+const Backdrop = ({ className = "", modalType, hideModal }) => {
   return (
-    <div className={`${className} Backdrop`} onClick={onClickHandler}></div>
+    <div
+      className={`${className} Backdrop`}
+      onClick={() => hideModal(modalType)}
+    ></div>
   );
 };
 
-export default Backdrop;
+export default connect(null, { hideModal })(Backdrop);

@@ -1,26 +1,37 @@
 import React from "react";
-import { Backdrop, Modal } from "../../";
-const SideDrawerMenu = ({ className = "", show, visibilityHandler }) => {
+import { Backdrop, Modal, SideDrawerLink } from "../../";
+import { connect } from "react-redux";
+const SideDrawerMenu = ({ className = "", show }) => {
   return (
     <div
       className={`${className} SideDrawer-Menu ModalContainer ${
         show ? "" : "hide"
       }`}
     >
-      <Backdrop className="SideDrawer" onClickHandler={visibilityHandler} />
+      <Backdrop className="SideDrawer" modalType="sideMenuModal" />
       <Modal>
-        <div className="SideDrawer-Menu-link auth-link">Create an Account</div>
-        <div className="SideDrawer-Menu-link auth-link">Login</div>
-        <div className="SideDrawer-Menu-link">Events</div>
-        <div className="SideDrawer-Menu-link">About Us</div>
-        <div className="SideDrawer-Menu-link">Our Story</div>
-        <div className="SideDrawer-Menu-link">How To Donate</div>
-        <div className="SideDrawer-Menu-link">Supporters</div>
-        <div className="SideDrawer-Menu-link">Creators</div>
-        <div className="SideDrawer-Menu-link">Contact Us</div>
+        <SideDrawerLink
+          className="auth-link"
+          text="Create an Account"
+          to="/register"
+        />
+        <SideDrawerLink className="auth-link" text="Login" to="/login" />
+        <SideDrawerLink text="Events" />
+        <SideDrawerLink text="About Us" />
+        <SideDrawerLink text="Our Story" />
+        <SideDrawerLink text="How to Donate" to="/donate" />
+        <SideDrawerLink text="Supporters" />
+        <SideDrawerLink text="Creators" />
+        <SideDrawerLink text="Contact Us" />
       </Modal>
     </div>
   );
 };
 
-export default SideDrawerMenu;
+const mapStateToProps = ({
+  modal: {
+    sideMenuModal: { show }
+  }
+}) => ({ show });
+
+export default connect(mapStateToProps)(SideDrawerMenu);

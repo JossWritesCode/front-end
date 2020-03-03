@@ -39,3 +39,50 @@
     margin-bottom: 0;
   }
 }
+
+.ConfirmationModalContainer {
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.ConfirmationModal {
+  flex-flow: column wrap;
+  width: 80%;
+  height: auto;
+  margin-top: 35%;
+
+  header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-weight: 400;
+    height: auto;
+    padding-top: 15px;
+    margin-bottom: 40px;
+  }
+
+  &-information {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    & > div {
+      padding: 0 15px;
+      padding-top: 20px;
+      letter-spacing: 0.1em;
+      font-size: 1.1rem;
+    }
+
+    &-flex-container {
+      display: flex;
+
+      & > div {
+        margin-left: 5px;
+
+        &:first-child {
+          width: 30%;
+        }
+      }
+    }
+  }
+}
