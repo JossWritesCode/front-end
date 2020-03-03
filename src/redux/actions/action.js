@@ -13,22 +13,3 @@ export const REGISTER_FAILURE = "REGISTER_FAILURE";
 
 export const HIDE_MODAL = "HIDE_MODAL";
 export const SHOW_MODAL = "SHOW_MODAL";
-
-export const donateMoney = donate => dispatch => {
-  //payload for money donated
-  console.log(donate);
-
-  dispatch({
-    type: UPDATE_DONATION_AMOUNT,
-    payload: donate
-  });
-};
-export const clearAmount = donate => dispatch => {
-  //clear the amount of donated money
-  console.log(donate);
-
-  dispatch({
-    type: CLEAR_DONATION,
-    payload: donate
-  });
-};
