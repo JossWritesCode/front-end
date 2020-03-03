@@ -1,7 +1,7 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { SubmitButton } from "../../";
+import { SubmitButton, Tooltip } from "../../";
 import { connect } from "react-redux";
 import { register } from "../../../redux/actionCreators";
 import { compose } from "redux";
@@ -11,6 +11,7 @@ const SignUpForm = ({ className = "", touched, errors }) => {
   return (
     <div className={`${className} FormContainer`}>
       <Form className="Form Register">
+        <Tooltip className="error" />
         <label>
           Email
           <Field type="email" name="email" />

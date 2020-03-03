@@ -1,0 +1,30 @@
+.Tooltip {
+  // general styles for a tooltip
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 3px 5px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+
+  div {
+    margin-right: 5px;
+    font-size: 0;
+  }
+
+  &.error {
+    border: 1px solid $background-pink;
+    background: rgba(255, 59, 59, 0.548);
+    color: $background-white;
+    transform: translateY(0);
+    transition: all 1s;
+
+    &.hide {
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: all 2s;
+    }
+  }
+}

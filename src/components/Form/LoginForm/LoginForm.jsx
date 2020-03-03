@@ -1,7 +1,7 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { SubmitButton } from "../../";
+import { SubmitButton, Tooltip } from "../../";
 import { login } from "../../../redux/actionCreators";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -11,6 +11,7 @@ const LoginForm = ({ className = "", touched, errors, authError }) => {
   return (
     <div className={`${className} FormContainer`}>
       <Form className="Form">
+        <Tooltip className="error" />
         <label>
           Email
           <Field type="email" name="email" />
@@ -54,7 +55,10 @@ const enhanceForm = compose(
           resetForm();
           history.push("/donate");
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          resetForm({ email: email });
+          console.log(err);
+        });
     }
   })
 );
