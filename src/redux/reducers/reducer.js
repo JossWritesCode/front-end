@@ -8,7 +8,8 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
   SHOW_MODAL,
-  HIDE_MODAL
+  HIDE_MODAL,
+  CLEAR_ERROR_STATUS
 } from "../actions/action";
 
 export const initialState = {
@@ -40,7 +41,13 @@ export const initialState = {
     }
   },
   auth: {
-    errors: ""
+    error: {
+      status: null
+    },
+    errorResponse: {
+      401: "Invalid email or password was submitted, please try again.",
+      500: "There was an unexpected response trying to communicate with the server. Please try again later."
+    }
   },
   loading: {
     phase: "",
@@ -108,7 +115,7 @@ export const rootReducer = (state = initialState, action) => {
           phase: "",
           active: false
         },
-        auth: { errors: action.payload }
+        auth: { ...state.auth, error: { status: action.payload } }
       };
     case REGISTER_START:
       return {
@@ -137,7 +144,16 @@ export const rootReducer = (state = initialState, action) => {
           phase: "",
           active: false
         },
-        auth: { errors: action.payload }
+        auth: { ...state.auth, error: { status: action.payload } }
+      };
+
+    case CLEAR_ERROR_STATUS:
+      return {
+        ...state,
+        auth: {
+          ...state.auth,
+          error: { status: null }
+        }
       };
 
     default:

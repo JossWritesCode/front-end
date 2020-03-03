@@ -20,6 +20,7 @@ import DonateForm from "./Form/DonateForm/DonateForm";
 import ConfirmationModalContainer from "./Modal/ConfirmationModalContainer/ConfirmationModalContainer";
 import Loader from "./Loader/Loader";
 import LoadingModal from "./Modal/LoadingModal/LoadingModal";
+import Tooltip from "./Tooltip/Tooltip";
 
 export {
   AuthModal,
@@ -43,5 +44,6 @@ export {
   DonateForm,
   ConfirmationModalContainer,
   Loader,
-  LoadingModal
+  LoadingModal,
+  Tooltip
 };

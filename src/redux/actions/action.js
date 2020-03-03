@@ -13,3 +13,5 @@ export const REGISTER_FAILURE = "REGISTER_FAILURE";
 
 export const HIDE_MODAL = "HIDE_MODAL";
 export const SHOW_MODAL = "SHOW_MODAL";
+
+export const CLEAR_ERROR_STATUS = "CLEAR_ERROR_STATUS";

@@ -33,9 +33,8 @@ export const login = credentials => async dispatch => {
     dispatch(loginSuccess(response));
     return response;
   } catch (err) {
-    dispatch(
-      loginFailure("Something went wrong signing in, please try again.")
-    );
+    console.log(err["response"]);
+    dispatch(loginFailure(err["response"].status));
     throw new Error(err);
   }
 };

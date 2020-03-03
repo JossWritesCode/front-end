@@ -34,9 +34,7 @@ export const register = credentials => async dispatch => {
     dispatch(registerSuccess(response));
     return response;
   } catch (err) {
-    dispatch(
-      registerFailure("Something went wrong registering, please try again.")
-    );
+    dispatch(registerFailure(err["response"].status));
     throw new Error(err);
   }
 };
