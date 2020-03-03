@@ -106,6 +106,17 @@
       align-items: center;
       padding: 50px 0;
       bottom: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-flow: column wrap;
+    }
+
+    @media (min-height: 900px) {
+      justify-content: flex-start;
+      .Modal {
+        margin-top: 300px;
+      }
     }
   }
 }
