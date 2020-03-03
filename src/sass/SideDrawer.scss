@@ -1,7 +1,7 @@
 .SideDrawer {
   &-Button {
     width: 45px;
-    height: 4.25vh;
+    height: 35px;
     border: 2px solid $button-white;
     display: flex;
     flex-flow: column;
@@ -19,6 +19,10 @@
   }
 
   &-Menu {
+    &.ModalContainer {
+      display: flex;
+      height: auto;
+    }
     justify-content: flex-end;
 
     a {
@@ -26,17 +30,17 @@
       color: $text-dark;
       width: 100%;
       height: 100%;
-      padding: 12px;
+      padding: 15px 12px;
       display: block;
     }
 
     .Modal {
-      width: 225px;
-      height: 70%;
-      flex-flow: row wrap;
+      width: 175px;
+      height: auto;
       top: 70px;
       transition: all 0.75s;
       transform: translateX(0px);
+      font-size: 1.2rem;
     }
 
     &.hide .Modal {
@@ -45,9 +49,9 @@
     }
 
     &-link {
-      font-size: 1.5rem;
       width: 100%;
       height: auto;
+      display: inline-block;
 
       &.auth-link {
         background: $background-pink;
@@ -64,6 +68,15 @@
       &:last-child {
         border-top-right-radius: unset;
         border-top-left-radius: unset;
+      }
+    }
+
+    @media (min-height: 675px) {
+      .Modal {
+        width: 225px;
+      }
+      &-link {
+        font-size: 1.35em;
       }
     }
   }
