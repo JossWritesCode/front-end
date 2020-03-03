@@ -47,7 +47,7 @@ const enhanceForm = withFormik({
   handleSubmit({ email, password }, { resetForm, history, dispatch }) {
     dispatch({ type: LOGIN_START });
     axiosWithAuth()
-      .post("")
+      .post("/auth/login")
       .then(res => {
         localStorage.setItem("token");
         dispatch({ type: LOGIN_SUCCESS, payload: res });

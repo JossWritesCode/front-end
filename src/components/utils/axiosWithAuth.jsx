@@ -7,6 +7,6 @@ export  function axiosWithAuth() {
     headers: {
       Authorization: `${token}`
     },
-    baseURL: ''
+    baseURL: 'https://vrfundingapp.herokuapp.com'
   });
 }

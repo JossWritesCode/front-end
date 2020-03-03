@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { SubmitButton } from "../../";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { connect } from "react-redux";
+
 const SignUpForm = ({ className = "", touched, errors }) => {
   return (
     <div className={`${className} FormContainer`}>
@@ -61,18 +62,19 @@ const enhanceForm = withFormik({
       "Passwords must match"
     )
   }),
-  handleSubmit({ email, password, verify }, { resetForm, history }) {
+  handleSubmit(user, { email, password, verify }, { resetForm, history }) {//added user as parameter
     // axios call goes here
     axiosWithAuth()
-      .post("")
+      .post("/auth/register", user)//parameter as prop
       .then(res => {
         console.log(res);
-        history.push("/login");
+        history.push("/");
       })
       .catch(err => console.log(err));
     resetForm();
   }
 });
+
 function mapStateToProps(state) {
   return state;
 }

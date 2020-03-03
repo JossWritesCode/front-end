@@ -7,7 +7,7 @@ import {useSelector} from 'react-redux'
 import {Button}from '..'
 import DonateButton from '../Button/DonateButton/DonateButton'
 
-const DonationPage = (props) => {
+const DonationPage = (props) => {//This CODE NOT BEING USED
     const [amount, setAmount] = useState(0);
     const dispatch = useDispatch()
     const user = useSelector(amount => amount.InitialState)
