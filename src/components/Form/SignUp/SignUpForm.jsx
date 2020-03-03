@@ -89,6 +89,7 @@ const enhanceForm = withFormik({
     resetForm();
   }
 });
+
 function mapStateToProps(state) {
   return state;
 }

@@ -24,7 +24,7 @@ function App() {
       {/* <ProtectedRoute path='/' component={DonationPage} /> */}
       <Switch>
         <Route
-          path="/login"
+          exact path="/"
           render={() => {
             return <LoginPage />;
           }}
@@ -38,7 +38,7 @@ function App() {
 
         <ProtectedRoute path="/donate" component={DonationPage} />
 
-        <Route path="/" exact render={() => <Redirect to="/login" />} />
+       {/* <Route path="/" exact render={() => <Redirect to="/login" />}*/} />
       </Switch>
     </div>
   );
