@@ -21,10 +21,11 @@ function App() {
       <ConfirmationModalContainer />
       <LoadingModal />
       <Navbar />
-      {/* <ProtectedRoute path='/' component={DonationPage} /> */}
+
       <Switch>
         <Route
-          exact path="/"
+          exact
+          path="/"
           render={() => {
             return <LoginPage />;
           }}
@@ -36,9 +37,16 @@ function App() {
           }}
         />
 
+        <Route
+          path="/login"
+          render={() => {
+            return <LoginPage />;
+          }}
+        />
+
         <ProtectedRoute path="/donate" component={DonationPage} />
 
-       {/* <Route path="/" exact render={() => <Redirect to="/login" />}*/} />
+        <Route path="/" exact render={() => <Redirect to="/login" />} />
       </Switch>
     </div>
   );

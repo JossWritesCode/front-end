@@ -32,9 +32,11 @@ export const register = credentials => async dispatch => {
   try {
     const response = await axios.post(url, credentials);
     dispatch(registerSuccess(response));
+    return response;
   } catch (err) {
     dispatch(
       registerFailure("Something went wrong registering, please try again.")
     );
+    throw new Error(err);
   }
 };

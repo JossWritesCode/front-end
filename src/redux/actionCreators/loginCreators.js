@@ -29,10 +29,13 @@ export const login = credentials => async dispatch => {
   const url = "https://vrfundingapp.herokuapp.com/auth/login";
   try {
     const response = await axios.post(url, credentials);
+    localStorage.setItem("token", response.token);
     dispatch(loginSuccess(response));
+    return response;
   } catch (err) {
     dispatch(
       loginFailure("Something went wrong signing in, please try again.")
     );
+    throw new Error(err);
   }
 };

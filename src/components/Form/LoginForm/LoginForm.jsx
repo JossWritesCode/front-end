@@ -4,6 +4,8 @@ import * as Yup from "yup";
 import { SubmitButton } from "../../";
 import { login } from "../../../redux/actionCreators";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { compose } from "redux";
 
 const LoginForm = ({ className = "", touched, errors, authError }) => {
   return (
@@ -30,33 +32,32 @@ const LoginForm = ({ className = "", touched, errors, authError }) => {
   );
 };
 
-const enhanceForm = withFormik({
-  mapPropsToValues({ email = "", password = "" }) {
-    return { email, password };
-  },
-  validationSchema: Yup.object().shape({
-    email: Yup.string().email("Please enter valid email"),
-    password: Yup.string()
-      .required("Please enter the required field")
-      .min(8, null)
-  }),
-  handleSubmit({ email, password }, { resetForm, props: { login, history } }) {
-    // dispatch({ type: LOGIN_START });
-    // axiosWithAuth()
-    //   .post("")
-    //   .then(res => {
-    //     localStorage.setItem("token");
-    //     dispatch({ type: LOGIN_SUCCESS, payload: res });
-    //     history.push("/donate");
-    //   })
-    //   .catch(err => dispatch({ LOGIN_FAILURE, payload: err }));
-
-    // axios call here
-    const credentials = { email, password };
-    login(credentials);
-    resetForm();
-  }
-});
+const enhanceForm = compose(
+  withRouter,
+  withFormik({
+    mapPropsToValues({ email = "", password = "" }) {
+      return { email, password };
+    },
+    validationSchema: Yup.object().shape({
+      email: Yup.string().email("Please enter valid email"),
+      password: Yup.string()
+        .required("Please enter the required field")
+        .min(8, null)
+    }),
+    async handleSubmit(
+      { email, password },
+      { resetForm, props: { login, history } }
+    ) {
+      const credentials = { username: email, password };
+      login(credentials)
+        .then(() => {
+          resetForm();
+          history.push("/donate");
+        })
+        .catch(err => console.log(err));
+    }
+  })
+);
 
 const mapStateToProps = ({ auth }) => ({ authError: auth.errors });
 
