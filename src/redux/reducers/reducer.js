@@ -106,6 +106,10 @@ export const rootReducer = (state = initialState, action) => {
         user: {
           ...state.user,
           model: action.payload
+        },
+        auth: {
+          ...state.auth,
+          error: { status: null }
         }
       };
     case LOGIN_FAILURE:
@@ -135,6 +139,10 @@ export const rootReducer = (state = initialState, action) => {
         user: {
           ...state.user,
           model: action.payload.data
+        },
+        auth: {
+          ...state.auth,
+          error: { status: null }
         }
       };
     case REGISTER_FAILURE:
