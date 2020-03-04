@@ -7,7 +7,8 @@ import {
   SignupPage as RegisterPage,
   DonationPage,
   ConfirmationModalContainer,
-  LoadingModal
+  LoadingModal,
+  BrowsePage
 } from "../";
 import ProtectedRoute from "../utils/ProtectedRoute";
 
@@ -45,6 +46,7 @@ function App() {
         />
 
         <ProtectedRoute path="/donate" component={DonationPage} />
+        <ProtectedRoute path="/browse" component={BrowsePage} />
 
         <Route path="/" exact render={() => <Redirect to="/login" />} />
       </Switch>
