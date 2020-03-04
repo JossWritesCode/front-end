@@ -24,6 +24,10 @@ export const initialState = {
       show: false
     }
   },
+  projects: {
+    all: [],
+    filter: []
+  },
   user: {
     model: null,
     // this information needs to be loaded if authed
