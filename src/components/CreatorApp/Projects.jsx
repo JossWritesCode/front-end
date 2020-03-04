@@ -6,7 +6,7 @@ const Projects = props => {
     <div>
       <h2>Project: {props.projects.projectname}</h2>
       <p>discription :{props.projects.description}</p>
-      <p>userName :{props.projects.username}</p>
+      <p>username :{props.projects.username}</p>
       <p>bio : {props.projects.bio}</p>
     </div>
   );

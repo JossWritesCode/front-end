@@ -7,6 +7,7 @@ const ProjectList = props => {
     e.preventDefault();
     props.getProjects();
   };
+
   console.log('this is props ct', props);
   return (
     <div className='project=list'>

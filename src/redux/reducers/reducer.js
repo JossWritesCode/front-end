@@ -12,7 +12,10 @@ import {
   CLEAR_ERROR_STATUS,
   FETCH_PROJECT_START,
   FETCH_PROJECT_SUCCESS,
-  FETCH_PROJECT_FAILURE
+  FETCH_PROJECT_FAILURE,
+  ADDPROJECT_START,
+  ADDPROJECT_SUCCESS,
+  ADDPROJECT_FAILURE
 } from '../actions/action';
 
 export const initialState = {
@@ -60,6 +63,44 @@ export const initialState = {
   projects: [],
   error: '',
   isFetching: false
+};
+
+const addInitialState = {
+  projectname: '',
+  description: '',
+  username: '',
+  bio: '',
+  isFetching: false,
+  error: ''
+};
+
+export const addReducer = (state = addInitialState, action) => {
+  switch (action.type) {
+    case ADDPROJECT_START: {
+      return {
+        ...state,
+        isFetching: true
+      };
+    }
+    case ADDPROJECT_SUCCESS: {
+      return {
+        ...state,
+        isFetching: false,
+        error: null,
+        projectname: action.payload.projectname,
+        description: action.payload.description,
+        username: action.payload.description,
+        bio: action.payload.bio
+      };
+    }
+    case ADDPROJECT_FAILURE: {
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload
+      };
+    }
+  }
 };
 
 export const rootReducer = (state = initialState, action) => {
