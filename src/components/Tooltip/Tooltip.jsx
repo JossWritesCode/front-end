@@ -5,8 +5,11 @@ import { clearErrorStatus } from "../../redux/actionCreators/errorCreator";
 
 const Tooltip = ({ className, status, errorResponse, clearErrorStatus }) => {
   return (
-    <div className={`${className} Tooltip ${status ? "" : "hide"}`}>
-      <div onClick={() => clearErrorStatus()}>
+    <div
+      className={`${className} Tooltip ${status ? "" : "hide"}`}
+      onClick={() => clearErrorStatus()}
+    >
+      <div>
         <CloseIcon fontSize="small" color="error" />
       </div>
       {errorResponse[status]}
