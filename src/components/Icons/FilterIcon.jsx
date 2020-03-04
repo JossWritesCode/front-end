@@ -2,18 +2,18 @@ import React from "react";
 
 const FilterIcon = () => {
   return (
-    <svg height="30" width="30">
+    <svg height="25" width="25">
       <g>
         <line
           x1="0"
           x2="22"
-          y1="10"
-          y2="10"
+          y1="5"
+          y2="5"
           style={{ strokeWidth: 2, stroke: "black", strokeLinecap: "round" }}
         />
         <circle
           cx="14"
-          cy="10"
+          cy="5"
           r="3"
           stroke="black"
           strokeWidth="2"
@@ -24,13 +24,13 @@ const FilterIcon = () => {
         <line
           x1="0"
           x2="22"
-          y1="18"
-          y2="18"
+          y1="13"
+          y2="13"
           style={{ strokeWidth: 2, stroke: "black", strokeLinecap: "round" }}
         />
         <circle
           cx="6"
-          cy="18"
+          cy="13"
           r="3"
           stroke="black"
           strokeWidth="2"
@@ -41,13 +41,13 @@ const FilterIcon = () => {
         <line
           x1="0"
           x2="22"
-          y1="26"
-          y2="26"
+          y1="21"
+          y2="21"
           style={{ strokeWidth: 2, stroke: "black", strokeLinecap: "round" }}
         />
         <circle
           cx="14"
-          cy="26"
+          cy="21"
           r="3"
           stroke="black"
           strokeWidth="2"
