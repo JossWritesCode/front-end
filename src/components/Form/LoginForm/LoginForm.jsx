@@ -52,11 +52,9 @@ const enhanceForm = compose(
       const credentials = { username: email, password };
       login(credentials)
         .then(() => {
-          resetForm();
           history.push("/donate");
         })
         .catch(err => {
-          resetForm({ email: email });
           console.log(err);
         });
     }
