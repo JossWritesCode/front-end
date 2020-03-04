@@ -21,6 +21,8 @@ import ConfirmationModalContainer from "./Modal/ConfirmationModalContainer/Confi
 import Loader from "./Loader/Loader";
 import LoadingModal from "./Modal/LoadingModal/LoadingModal";
 import Tooltip from "./Tooltip/Tooltip";
+import BrowsePage from "./Pages/BrowsePage/BrowsePage";
+import { FilterIcon, WindowPane } from "./Icons/";
 
 export {
   AuthModal,
@@ -45,5 +47,8 @@ export {
   ConfirmationModalContainer,
   Loader,
   LoadingModal,
-  Tooltip
+  Tooltip,
+  BrowsePage,
+  FilterIcon,
+  WindowPane
 };
