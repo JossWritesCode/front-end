@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Navbar,
   SideDrawerMenu,
@@ -7,15 +7,16 @@ import {
   SignupPage as RegisterPage,
   DonationPage,
   ConfirmationModalContainer,
-  LoadingModal
-} from "../";
-import ProtectedRoute from "../utils/ProtectedRoute";
+  LoadingModal,
+  ProjectList
+} from '../';
+import ProtectedRoute from '../utils/ProtectedRoute';
 
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <AuthModal />
       <SideDrawerMenu />
       <ConfirmationModalContainer />
@@ -25,28 +26,29 @@ function App() {
       <Switch>
         <Route
           exact
-          path="/"
+          path='/'
           render={() => {
             return <LoginPage />;
           }}
         />
         <Route
-          path="/register"
+          path='/register'
           render={() => {
             return <RegisterPage />;
           }}
         />
 
         <Route
-          path="/login"
+          path='/login'
           render={() => {
             return <LoginPage />;
           }}
         />
 
-        <ProtectedRoute path="/donate" component={DonationPage} />
+        <ProtectedRoute path='/donate' component={DonationPage} />
 
-        <Route path="/" exact render={() => <Redirect to="/login" />} />
+        <Route path='/' exact render={() => <Redirect to='/login' />} />
+        <Route path='/projects' component={ProjectList} />
       </Switch>
     </div>
   );
