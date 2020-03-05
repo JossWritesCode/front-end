@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getProjects } from '../../redux/actionCreators/projectCreators';
 import Projects from '../CreatorApp/Projects';
 const ProjectList = props => {
-  const fetchProjects = e => {
-    e.preventDefault();
+  // const fetchProjects = e => {
+  //   e.preventDefault();
+
+  // };
+  useEffect(() => {
     props.getProjects();
-  };
+  }, []);
 
   console.log('this is props ct', props);
   return (
@@ -16,8 +19,6 @@ const ProjectList = props => {
         {props.projects.map(projects => (
           <Projects key={projects.id} projects={projects} />
         ))}
-
-        <button onClick={fetchProjects}>Projects</button>
       </div>
     </div>
   );
