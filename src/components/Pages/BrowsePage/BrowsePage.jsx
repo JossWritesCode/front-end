@@ -33,14 +33,13 @@ const BrowsePage = ({ className = "" }) => {
   const projectList = projects.map(({ id, title, text }) => {
     return (
       <div key="id">
-        <div>
-          <img
-            src="https://via.placeholder.com/122x77"
-            alt="placeholder image"
-          />
+        <div className="image-container">
+          <img src="https://via.placeholder.com/122x77" alt="placeholder" />
         </div>
-        <div>{title}</div>
-        <div>{text}</div>
+        <div className="text-container">
+          <div>{title}</div>
+          <div>{text}</div>
+        </div>
       </div>
     );
   });
@@ -49,7 +48,7 @@ const BrowsePage = ({ className = "" }) => {
       <Header title="Browse" />
       <div className="browse-controls">
         <div className="filter-control">
-          <FilterIcon />
+          <FilterIcon /> <p>Filter</p>
         </div>
         <div className="display-control">
           <FormatListBulletedIcon fontSize="medium" />

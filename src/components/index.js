@@ -11,7 +11,7 @@ import LoginForm from "./Form/LoginForm/LoginForm";
 import Button from "./Button/Button";
 import DonateButton from "./Button/DonateButton/DonateButton";
 import SubmitButton from "./Button/SubmitButton/SubmitButton";
-import SignUpForm from "./Form/SignUp/SignUpForm";
+import SignUpForm from "./Form/SignUpform/SignUpForm";
 import OAuthOptions from "./OAuthOptions/OAuthOptions";
 import SignupPage from "./Pages/SignUpPage/SignUpPage";
 import SideDrawerLink from "./SideDrawer/SideDrawerLink/SideDrawerLink";

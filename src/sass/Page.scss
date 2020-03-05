@@ -16,3 +16,26 @@
     }
   }
 }
+
+.BrowsePage {
+  .browse-controls {
+    font-family: "Yanone Kaffeesatz";
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 4%;
+    @media (min-width: 700px) {
+      padding: 0 10%;
+    }
+  }
+
+  .filter-control {
+    flex-grow: 2;
+    justify-content: center;
+    display: flex;
+
+    & > p {
+      margin: auto 0;
+      font-size: 1rem;
+    }
+  }
+}

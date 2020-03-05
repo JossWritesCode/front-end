@@ -16,7 +16,7 @@ import {
   ADDPROJECT_START,
   ADDPROJECT_SUCCESS,
   ADDPROJECT_FAILURE
-} from '../actions/action';
+} from "../actions/action";
 
 export const initialState = {
   modal: {
@@ -30,7 +30,7 @@ export const initialState = {
       show: false
     }
   },
-  projects: {
+  project: {
     all: [],
     filter: []
   },
@@ -55,27 +55,27 @@ export const initialState = {
       status: null
     },
     errorResponse: {
-      401: 'Invalid email or password was submitted, please try again.',
-      500: 'There was an unexpected response trying to communicate with the server. Please try again later.'
+      401: "Invalid email or password was submitted, please try again.",
+      500: "There was an unexpected response trying to communicate with the server. Please try again later."
     }
   },
   loading: {
-    phase: '',
+    phase: "",
     active: false
   },
 
   projects: [],
-  error: '',
+  error: "",
   isFetching: false
 };
 
 const addInitialState = {
-  projectname: '',
-  description: '',
-  username: '',
-  bio: '',
+  projectname: "",
+  description: "",
+  username: "",
+  bio: "",
   isFetching: false,
-  error: ''
+  error: ""
 };
 
 export const addReducer = (state = addInitialState, action) => {
@@ -110,7 +110,7 @@ export const addReducer = (state = addInitialState, action) => {
 };
 
 export const rootReducer = (state = initialState, action) => {
-  console.log('reducer', action);
+  console.log("reducer", action);
   // reducers need to be split due to complexity and we can group them with related actions to simplify this reducer
   switch (action.type) {
     case UPDATE_DONATION_AMOUNT:
@@ -147,7 +147,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: {
-          phase: 'Logging in...',
+          phase: "Logging in...",
           active: true
         }
       };
@@ -155,7 +155,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: {
-          phase: '',
+          phase: "",
           active: false
         },
         user: {
@@ -171,7 +171,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: {
-          phase: '',
+          phase: "",
           active: false
         },
         auth: { ...state.auth, error: { status: action.payload } }
@@ -180,7 +180,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: {
-          phase: 'Registering...',
+          phase: "Registering...",
           active: true
         }
       };
@@ -188,7 +188,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: {
-          phase: '',
+          phase: "",
           active: false
         },
         user: {
@@ -204,7 +204,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: {
-          phase: '',
+          phase: "",
           active: false
         },
         auth: { ...state.auth, error: { status: action.payload } }
@@ -221,13 +221,13 @@ export const rootReducer = (state = initialState, action) => {
     case FETCH_PROJECT_START:
       return {
         ...state,
-        error: '',
+        error: "",
         isFetching: true
       };
     case FETCH_PROJECT_SUCCESS:
       return {
         ...state,
-        error: '',
+        error: "",
         isFetching: true,
         projects: action.payload
       };
