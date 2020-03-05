@@ -100,6 +100,8 @@ export const addReducer = (state = addInitialState, action) => {
         error: action.payload
       };
     }
+    default:
+      return state;
   }
 };
 
