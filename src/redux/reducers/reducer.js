@@ -109,11 +109,6 @@ export const addReducer = (state = addInitialState, action) => {
         error: action.payload
       };
     }
-<<<<<<< Updated upstream
-    default:
-      return state;
-=======
->>>>>>> Stashed changes
   }
 };
 
@@ -237,14 +232,11 @@ export const rootReducer = (state = initialState, action) => {
         error: action.payload,
         isFetching: false
       };
-<<<<<<< Updated upstream
-=======
     case CREATE_PROJECT:
       return{
         ...state,
         project: action.payload
       };
->>>>>>> Stashed changes
 
     default:
       return state;
