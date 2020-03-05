@@ -19,8 +19,11 @@ export const CLEAR_ERROR_STATUS = "CLEAR_ERROR_STATUS";
 //FOR UPDATE CREATOR FORM
 export const CREATE_PROJECT = "CREATE_PROJECT";
 
+<<<<<<< Updated upstream
 =======
 export const CLEAR_ERROR_STATUS = 'CLEAR_ERROR_STATUS';
+=======
+>>>>>>> Stashed changes
 // fetch projects
 export const FETCH_PROJECT_START = 'FETCH_PROJECT_START';
 export const FETCH_PROJECT_SUCCESS = 'FETCH_PROJECT_SUCCESS';
@@ -29,4 +32,7 @@ export const FETCH_PROJECT_FAILURE = 'FETCH_PROJECT_FAILURE';
 export const ADDPROJECT_START = 'ADDPROJECT_START';
 export const ADDPROJECT_SUCCESS = 'ADDPROJECT_SUCCESS';
 export const ADDPROJECT_FAILURE = 'ADDPROJECT_FAILURE';
+<<<<<<< Updated upstream
 >>>>>>> dcca963ba2d75fa07fbd41d78bbb6356d758c749
+=======
+>>>>>>> Stashed changes

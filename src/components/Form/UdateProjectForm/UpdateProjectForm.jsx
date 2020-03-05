@@ -5,12 +5,12 @@ import * as Yup from 'yup'
 import {SubmitButton, Button} from '../../'
 // import {useParams} from 'react-router-dom'
 import { initialState } from '../../../redux/reducers/reducer'
-import {create} from '../../../redux/actionCreators/projectCreators'
+import { createProject, create} from '../../../redux/actionCreators/updateProjCreator'
 import {connect} from 'react-redux'
 
 
 const UpdateProjectForm = ({className=''})=>{
-    const [update, setUpdate] = useState(initialState)
+    const [update, setUpdate] = useState(false)
     const [projectToUpdate, setProjToUpdate] = useState(initialState)
     // const {id} = useParams();
 
@@ -71,21 +71,20 @@ const UpdateProjectForm = ({className=''})=>{
                     <Field type='text'
                      name='bio'/>
                 </label>
-                <label>
-                    User
-                    <Field type='id' 
-                    key={projectToUpdate.id}/>
-                </label>
-            <SubmitButton/>
-            <Button/>
+            
+            <SubmitButton onClick={updateProject}/>
+            <Button onClick={deleteUpdate}/>
             </Form>
         </div>
     )
 
 }
-const mapStateToProps = ({project}) => ({ project });
+const mapStateToProps = (state) => ({
+    project: state.project,
+    error: state.error
+});
 
 export default connect(
     mapStateToProps, 
-    {create}(UpdateProjectForm)
-)
+    {create, createProject})(UpdateProjectForm)
+

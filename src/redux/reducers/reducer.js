@@ -15,7 +15,8 @@ import {
   FETCH_PROJECT_FAILURE,
   ADDPROJECT_START,
   ADDPROJECT_SUCCESS,
-  ADDPROJECT_FAILURE
+  ADDPROJECT_FAILURE,
+  CREATE_PROJECT
 } from '../actions/action';
 
 export const initialState = {
@@ -29,6 +30,14 @@ export const initialState = {
     sideMenuModal: {
       show: false
     }
+  },
+  project:{
+    id: '',
+    projectname: '',
+    description: '',
+    username: '',
+    bio: ''
+  
   },
   user: {
     model: null,
@@ -100,8 +109,11 @@ export const addReducer = (state = addInitialState, action) => {
         error: action.payload
       };
     }
+<<<<<<< Updated upstream
     default:
       return state;
+=======
+>>>>>>> Stashed changes
   }
 };
 
@@ -225,6 +237,14 @@ export const rootReducer = (state = initialState, action) => {
         error: action.payload,
         isFetching: false
       };
+<<<<<<< Updated upstream
+=======
+    case CREATE_PROJECT:
+      return{
+        ...state,
+        project: action.payload
+      };
+>>>>>>> Stashed changes
 
     default:
       return state;
