@@ -8,7 +8,8 @@ import {
   DonationPage,
   ConfirmationModalContainer,
   LoadingModal,
-  BrowsePage
+  BrowsePage,
+  ProjectList
 } from "../";
 import ProtectedRoute from "../utils/ProtectedRoute";
 
@@ -49,6 +50,7 @@ function App() {
         <ProtectedRoute path="/browse" component={BrowsePage} />
 
         <Route path="/" exact render={() => <Redirect to="/login" />} />
+        <Route path="/projects" component={ProjectList} />
       </Switch>
     </div>
   );

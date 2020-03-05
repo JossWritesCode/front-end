@@ -22,6 +22,7 @@ import Loader from "./Loader/Loader";
 import LoadingModal from "./Modal/LoadingModal/LoadingModal";
 import Tooltip from "./Tooltip/Tooltip";
 import BrowsePage from "./Pages/BrowsePage/BrowsePage";
+import ProjectList from "./CreatorApp/ProjectList";
 import { FilterIcon, WindowPane } from "./Icons/";
 
 export {
@@ -50,5 +51,6 @@ export {
   Tooltip,
   BrowsePage,
   FilterIcon,
-  WindowPane
+  WindowPane,
+  ProjectList
 };

@@ -1,22 +1,25 @@
-import CREATE_PROJECT from '../actions/action'
-// import axios from 'axios'
-// import { createStore } from 'redux'
-import { axiosWithAuth } from '../../components/utils/axiosWithAuth'
+import {
+  FETCH_PROJECT_START,
+  FETCH_PROJECT_SUCCESS,
+  FETCH_PROJECT_FAILURE
+} from '../actions/action';
+import { axiosWithAuth } from '../../components/utils/axiosWithAuth';
 
-export const createProject = () => {
-    return{
-        type: CREATE_PROJECT
-    }
-}
-
-export const create = dispatch => {
-    dispatch(createProject());
-
-    axiosWithAuth()
-        .post('/projects')
-        .then(res =>{
-            console.log(res);
-        })
-        .catch(err => console.log(err))
-
-}
+export const getProjects = () => dispatch => {
+  dispatch({ type: FETCH_PROJECT_START });
+  axiosWithAuth()
+    .get('/projects', {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: localStorage.getItem('token')
+      }
+    })
+    .then(res => {
+      console.log('this is from pc Carlos', res.data);
+      dispatch({ type: FETCH_PROJECT_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: FETCH_PROJECT_FAILURE, payload: err });
+    });
+};
