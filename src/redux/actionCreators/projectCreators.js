@@ -8,7 +8,7 @@ import { axiosWithAuth } from '../../components/utils/axiosWithAuth';
 export const getProjects = () => dispatch => {
   dispatch({ type: FETCH_PROJECT_START });
   axiosWithAuth()
-    .get('/projects', {
+    .get('https://vrfundingapp.herokuapp.com/projects/', {
       headers: {
         'Content-Type': 'application/json',
         Authorization: localStorage.getItem('token')
