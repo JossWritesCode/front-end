@@ -1,14 +1,24 @@
+import { combineReducers } from "redux";
+
 import {
   UPDATE_DONATION_AMOUNT,
   CLEAR_DONATION,
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  SIGNUP_START,
-  SIGNUP_SUCCESS,
-  SIGNUP_FAILURE,
+  REGISTER_START,
+  REGISTER_SUCCESS,
+  REGISTER_FAILURE,
   SHOW_MODAL,
-  HIDE_MODAL
+  HIDE_MODAL,
+  CLEAR_ERROR_STATUS,
+  FETCH_PROJECT_START,
+  FETCH_PROJECT_SUCCESS,
+  FETCH_PROJECT_FAILURE,
+  ADDPROJECT_START,
+  ADDPROJECT_SUCCESS,
+  ADDPROJECT_FAILURE,
+  CREATE_PROJECT
 } from "../actions/action";
 
 export const initialState = {
@@ -23,7 +33,18 @@ export const initialState = {
       show: false
     }
   },
+  project: {
+    id: "",
+    projectname: "",
+    description: "",
+    username: "",
+    bio: "",
+    error: "",
+    isFetching: false,
+    list: []
+  },
   user: {
+    model: null,
     // this information needs to be loaded if authed
     token: null,
     name: null,
@@ -38,18 +59,151 @@ export const initialState = {
       account: null
     }
   },
-  loading: false,
-  error: "",
-  userInfo: {
-    // don't save this information, it is available inside the login/sign up/donate form
-    email: "",
-    password: "",
-    comfirmPassword: ""
+
+  auth: {
+    error: {
+      status: null
+    },
+    errorResponse: {
+      401: "Invalid email or password was submitted, please try again.",
+      500: "There was an unexpected response trying to communicate with the server. Please try again later."
+    },
+    loading: {
+      phase: "",
+      active: false
+    }
   }
 };
 
-export const rootReducer = (state = initialState, action) => {
-  // reducers need to be split due to complexity and so that we can group them with related actions
+const addInitialState = {
+  projectname: "",
+  description: "",
+  username: "",
+  bio: "",
+  isFetching: false,
+  error: ""
+};
+
+export const addReducer = (state = addInitialState, action) => {
+  switch (action.type) {
+    case ADDPROJECT_START: {
+      return {
+        ...state,
+        isFetching: true
+      };
+    }
+    case ADDPROJECT_SUCCESS: {
+      return {
+        ...state,
+        isFetching: false,
+        error: null,
+        projectname: action.payload.projectname,
+        description: action.payload.description,
+        username: action.payload.description,
+        bio: action.payload.bio
+      };
+    }
+    case ADDPROJECT_FAILURE: {
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload
+      };
+    }
+    default:
+      return { ...state };
+  }
+};
+
+const modal = (state = { ...initialState.modal }, action) => {
+  console.log(state);
+  switch (action.type) {
+    case SHOW_MODAL:
+      return {
+        ...state,
+        [action.payload]: { show: true }
+      };
+    case HIDE_MODAL:
+      return {
+        ...state,
+        [action.payload]: { show: false }
+      };
+
+    default:
+      return {
+        ...state
+      };
+  }
+};
+
+const auth = (state = { ...initialState.auth }, action) => {
+  switch (action.type) {
+    case LOGIN_START:
+      return {
+        ...state,
+        loading: {
+          phase: "Logging in...",
+          active: true
+        }
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        loading: {
+          phase: "",
+          active: false
+        },
+
+        error: { status: null }
+      };
+    case LOGIN_FAILURE:
+      return {
+        ...state,
+        loading: {
+          phase: "",
+          active: false
+        },
+        error: { status: action.payload }
+      };
+    case REGISTER_START:
+      return {
+        ...state,
+        loading: {
+          phase: "Registering...",
+          active: true
+        }
+      };
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        loading: {
+          phase: "",
+          active: false
+        },
+        error: { status: null }
+      };
+    case REGISTER_FAILURE:
+      return {
+        ...state,
+        loading: {
+          phase: "",
+          active: false
+        },
+        error: { status: action.payload }
+      };
+
+    case CLEAR_ERROR_STATUS:
+      return {
+        ...state,
+        error: { status: null }
+      };
+
+    default:
+      return { ...state };
+  }
+};
+
+const user = (state = { ...initialState.user }, action) => {
   switch (action.type) {
     case UPDATE_DONATION_AMOUNT:
       return {
@@ -71,52 +225,47 @@ export const rootReducer = (state = initialState, action) => {
           }
         }
       };
-    case SHOW_MODAL:
+    default:
+      return { ...state };
+  }
+};
+
+const project = (state = { ...initialState.project }, action) => {
+  switch (action.type) {
+    case FETCH_PROJECT_START:
       return {
         ...state,
-        modal: { ...state.modal, [action.payload]: { show: true } }
+        error: "",
+        isFetching: true
       };
-    case HIDE_MODAL:
+    case FETCH_PROJECT_SUCCESS:
       return {
         ...state,
-        modal: { ...state.modal, [action.payload]: { show: false } }
+        error: "",
+        isFetching: false,
+        list: action.payload
       };
-    case LOGIN_START:
+    case FETCH_PROJECT_FAILURE:
       return {
         ...state,
-        loading: true
+        error: action.payload,
+        isFetching: false
       };
-    case LOGIN_SUCCESS:
+    case CREATE_PROJECT:
       return {
         ...state,
-        loading: false,
-        userInfo: action.payload
-      };
-    case LOGIN_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload
-      };
-    case SIGNUP_START:
-      return {
-        ...state,
-        loading: true
-      };
-    case SIGNUP_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        userInfo: action.payload
-      };
-    case SIGNUP_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload
+        project: action.payload
       };
 
     default:
-      return state;
+      return { ...state };
   }
 };
+
+export const rootReducer = combineReducers({
+  addReducer,
+  auth,
+  modal,
+  user,
+  project
+});

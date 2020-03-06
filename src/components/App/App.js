@@ -6,8 +6,13 @@ import {
   LoginPage,
   SignupPage as RegisterPage,
   DonationPage,
-  ConfirmationModalContainer
+  ConfirmationModalContainer,
+  LoadingModal,
+  BrowsePage,
+  ProjectList
 } from "../";
+
+import UpdateProjectForm from "../Form/UdateProjectForm/UpdateProjectForm";
 import ProtectedRoute from "../utils/ProtectedRoute";
 
 import { Switch, Route, Redirect } from "react-router-dom";
@@ -18,11 +23,13 @@ function App() {
       <AuthModal />
       <SideDrawerMenu />
       <ConfirmationModalContainer />
+      <LoadingModal />
       <Navbar />
-      {/* <ProtectedRoute path='/' component={DonationPage} /> */}
+
       <Switch>
         <Route
-          exact path="/"
+          exact
+          path="/login"
           render={() => {
             return <LoginPage />;
           }}
@@ -34,9 +41,18 @@ function App() {
           }}
         />
 
-        <Route path="/donate" render={() => <DonationPage />} />
+        <Route
+          path="/edit"
+          render={() => {
+            return <UpdateProjectForm />;
+          }}
+        />
 
-       {/* <Route path="/" exact render={() => <Redirect to="/login" />}*/} />
+        <ProtectedRoute path="/donate" component={DonationPage} />
+        <ProtectedRoute path="/browse" component={BrowsePage} />
+
+        <Route path="/" exact render={() => <Redirect to="/login" />} />
+        <Route render={() => <Redirect to="/login" />} />
       </Switch>
     </div>
   );

@@ -1,18 +1,17 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { SubmitButton } from "../../";
-import { axiosWithAuth } from "../../utils/axiosWithAuth";
-import {
-  LOGIN_START,
-  LOGIN_SUCCESS,
-  LOGIN_FAILURE
-} from "../../../redux/actions/action";
+import { SubmitButton, Tooltip } from "../../";
+import { login } from "../../../redux/actionCreators";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { compose } from "redux";
 
 const LoginForm = ({ className = "", touched, errors }) => {
   return (
     <div className={`${className} FormContainer`}>
       <Form className="Form">
+        <Tooltip className="error" />
         <label>
           Email
           <Field type="email" name="email" />
@@ -34,29 +33,34 @@ const LoginForm = ({ className = "", touched, errors }) => {
   );
 };
 
-const enhanceForm = withFormik({
-  mapPropsToValues({ email = "", password = "" }) {
-    return { email, password };
-  },
-  validationSchema: Yup.object().shape({
-    email: Yup.string().email("Please enter valid email"),
-    password: Yup.string()
-      .required("Please enter the required field")
-      .min(8, null)
-  }),
-  handleSubmit({ email, password }, { resetForm, history, dispatch }) {
-    dispatch({ type: LOGIN_START });
-    axiosWithAuth()
-      .post("/auth/login")
-      .then(res => {
-        localStorage.setItem("token");
-        dispatch({ type: LOGIN_SUCCESS, payload: res });
-        history.push("/DonationPage");
-      })
-      .catch(err => dispatch({ LOGIN_FAILURE, payload: err }));
-    // axios call here
-    resetForm();
-  }
-});
+const enhanceForm = compose(
+  withRouter,
+  withFormik({
+    mapPropsToValues({ email = "", password = "" }) {
+      return { email, password };
+    },
+    validationSchema: Yup.object().shape({
+      email: Yup.string().email("Please enter valid email"),
+      password: Yup.string()
+        .required("Please enter the required field")
+        .min(8, null)
+    }),
+    async handleSubmit(
+      { email, password },
+      { resetForm, props: { login, history } }
+    ) {
+      const credentials = { username: email, password };
+      login(credentials)
+        .then(() => {
+          history.push("/browse");
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  })
+);
 
-export default enhanceForm(LoginForm);
+const mapStateToProps = ({ auth }) => ({ authError: auth.errors });
+
+export default connect(mapStateToProps, { login })(enhanceForm(LoginForm));

@@ -85,3 +85,18 @@
     }
   }
 }
+
+.FormContainer {
+  form.Form.Register {
+    label:nth-child(4) {
+      display: flex;
+      input[type="checkbox"] {
+        display: inline-block;
+        width: auto;
+      }
+      p {
+        width: 90%;
+      }
+    }
+  }
+}
