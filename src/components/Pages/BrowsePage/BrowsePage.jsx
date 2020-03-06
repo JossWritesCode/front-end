@@ -1,63 +1,43 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Header, FilterIcon, WindowPane } from "../../";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { Link } from "react-router-dom";
-
-const projects = [
-  {
-    id: 1,
-    title: "Far, Far, Away...",
-    text:
-      "Take a trip through the galaxy with your very own droid to save denizens far, far, away..."
-  },
-  {
-    id: 2,
-    title: "Talk to me",
-    text:
-      "All of your devices in one place, at one time, and right before your eyes..."
-  },
-  {
-    id: 3,
-    title: "Blind Guidance",
-    text:
-      "Explore terrains made by anonymous architects with only their shepards as your guide..."
-  },
-  {
-    id: 4,
-    title: "Game on",
-    text:
-      "Take down enemies while busting a move through our disco intergalatic laser gun range..."
-  }
-];
+import { connect } from "react-redux";
 
 const BrowsePage = ({ className = "" }) => {
+  const [projects, setProjects] = useState([]);
   useEffect(() => {
     const getProjects = async () => {
       try {
         const response = await axiosWithAuth().get("/projects");
         console.log(response);
+
+        setProjects(response.data);
       } catch (err) {
         console.log(err);
       }
     };
+
     getProjects();
   }, []);
-  const projectList = projects.map(({ id, title, text }) => {
-    return (
-      <Link to={`/edit/${id}`}>
-        <div key={id}>
-          <div className="image-container">
-            <img src="https://via.placeholder.com/122x77" alt="placeholder" />
+  const projectList = projects.map(
+    ({ id, projectname, projectdescription }) => {
+      return (
+        <Link key={id} to={`/edit/${id}`}>
+          <div>
+            <div className="image-container">
+              <img src="https://via.placeholder.com/122x77" alt="placeholder" />
+            </div>
+            <div className="text-container">
+              <div className="text-container-title">{projectname}</div>
+              <div>{projectdescription}</div>
+            </div>
           </div>
-          <div className="text-container">
-            <div className="text-container-title">{title}</div>
-            <div>{text}</div>
-          </div>
-        </div>
-      </Link>
-    );
-  });
+        </Link>
+      );
+    }
+  );
   return (
     <div className={`${className} BrowsePage Page`}>
       <Header title="Browse" />
@@ -76,4 +56,6 @@ const BrowsePage = ({ className = "" }) => {
   );
 };
 
-export default BrowsePage;
+const mapStateToProps = ({ list: projectList }) => ({ projectList });
+
+export default connect(mapStateToProps, null)(BrowsePage);
