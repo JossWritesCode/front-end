@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
 import {
   UPDATE_DONATION_AMOUNT,
@@ -19,7 +19,7 @@ import {
   ADDPROJECT_SUCCESS,
   ADDPROJECT_FAILURE,
   CREATE_PROJECT
-} from '../actions/action';
+} from "../actions/action";
 
 export const initialState = {
   modal: {
@@ -34,13 +34,14 @@ export const initialState = {
     }
   },
   project: {
-    id: '',
-    projectname: '',
-    description: '',
-    username: '',
-    bio: '',
-    error: '',
-    isFetching: false
+    id: "",
+    projectname: "",
+    description: "",
+    username: "",
+    bio: "",
+    error: "",
+    isFetching: false,
+    list: []
   },
   user: {
     model: null,
@@ -64,23 +65,23 @@ export const initialState = {
       status: null
     },
     errorResponse: {
-      401: 'Invalid email or password was submitted, please try again.',
-      500: 'There was an unexpected response trying to communicate with the server. Please try again later.'
+      401: "Invalid email or password was submitted, please try again.",
+      500: "There was an unexpected response trying to communicate with the server. Please try again later."
     },
     loading: {
-      phase: '',
+      phase: "",
       active: false
     }
   }
 };
 
 const addInitialState = {
-  projectname: '',
-  description: '',
-  username: '',
-  bio: '',
+  projectname: "",
+  description: "",
+  username: "",
+  bio: "",
   isFetching: false,
-  error: ''
+  error: ""
 };
 
 export const addReducer = (state = addInitialState, action) => {
@@ -141,7 +142,7 @@ const auth = (state = { ...initialState.auth }, action) => {
       return {
         ...state,
         loading: {
-          phase: 'Logging in...',
+          phase: "Logging in...",
           active: true
         }
       };
@@ -149,7 +150,7 @@ const auth = (state = { ...initialState.auth }, action) => {
       return {
         ...state,
         loading: {
-          phase: '',
+          phase: "",
           active: false
         },
 
@@ -159,7 +160,7 @@ const auth = (state = { ...initialState.auth }, action) => {
       return {
         ...state,
         loading: {
-          phase: '',
+          phase: "",
           active: false
         },
         error: { status: action.payload }
@@ -168,7 +169,7 @@ const auth = (state = { ...initialState.auth }, action) => {
       return {
         ...state,
         loading: {
-          phase: 'Registering...',
+          phase: "Registering...",
           active: true
         }
       };
@@ -176,7 +177,7 @@ const auth = (state = { ...initialState.auth }, action) => {
       return {
         ...state,
         loading: {
-          phase: '',
+          phase: "",
           active: false
         },
         error: { status: null }
@@ -185,7 +186,7 @@ const auth = (state = { ...initialState.auth }, action) => {
       return {
         ...state,
         loading: {
-          phase: '',
+          phase: "",
           active: false
         },
         error: { status: action.payload }
@@ -230,21 +231,19 @@ const user = (state = { ...initialState.user }, action) => {
 };
 
 const project = (state = { ...initialState.project }, action) => {
-  console.log('reducer', action);
-  // reducers need to be split due to complexity and we can group them with related actions to simplify this reducer
   switch (action.type) {
     case FETCH_PROJECT_START:
       return {
         ...state,
-        error: '',
+        error: "",
         isFetching: true
       };
     case FETCH_PROJECT_SUCCESS:
       return {
         ...state,
-        error: '',
-        isFetching: true,
-        projects: action.payload
+        error: "",
+        isFetching: false,
+        list: action.payload
       };
     case FETCH_PROJECT_FAILURE:
       return {
