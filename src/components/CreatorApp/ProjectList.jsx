@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getProjects } from '../../redux/actionCreators/projectCreators';
 import Projects from '../CreatorApp/Projects';
+import ProjectForm from '../Form/ProjectForm/ProjectForm';
 const ProjectList = props => {
   // const fetchProjects = e => {
   //   e.preventDefault();
@@ -16,10 +17,11 @@ const ProjectList = props => {
     <div className='project=list'>
       <h1>Project List</h1>
       <div>
-        {props.projects.map(projects => (
+        {/* {props.projects.map(projects => (
           <Projects key={projects.id} projects={projects} />
-        ))}
+        ))} */}
       </div>
+      <ProjectForm />
     </div>
   );
 };
