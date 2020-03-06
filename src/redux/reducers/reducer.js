@@ -17,7 +17,7 @@ import {
   ADDPROJECT_SUCCESS,
   ADDPROJECT_FAILURE,
   CREATE_PROJECT
-} from '../actions/action';
+} from "../actions/action";
 
 export const initialState = {
   modal: {
@@ -32,8 +32,13 @@ export const initialState = {
     }
   },
   project: {
-    all: [],
-    filter: []
+    id: "",
+    projectname: "",
+    description: "",
+    username: "",
+    bio: "",
+    error: "",
+    isFetching: false
   },
   user: {
     model: null,
@@ -63,11 +68,7 @@ export const initialState = {
   loading: {
     phase: "",
     active: false
-  },
-
-  projects: [],
-  error: "",
-  isFetching: false
+  }
 };
 
 const addInitialState = {
@@ -237,7 +238,7 @@ export const rootReducer = (state = initialState, action) => {
         isFetching: false
       };
     case CREATE_PROJECT:
-      return{
+      return {
         ...state,
         project: action.payload
       };
