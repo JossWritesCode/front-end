@@ -15,8 +15,9 @@ import {
   FETCH_PROJECT_FAILURE,
   ADDPROJECT_START,
   ADDPROJECT_SUCCESS,
-  ADDPROJECT_FAILURE
-} from "../actions/action";
+  ADDPROJECT_FAILURE,
+  CREATE_PROJECT
+} from '../actions/action';
 
 export const initialState = {
   modal: {
@@ -104,8 +105,6 @@ export const addReducer = (state = addInitialState, action) => {
         error: action.payload
       };
     }
-    default:
-      return state;
   }
 };
 
@@ -236,6 +235,11 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
         isFetching: false
+      };
+    case CREATE_PROJECT:
+      return{
+        ...state,
+        project: action.payload
       };
 
     default:

@@ -10,8 +10,10 @@ import {
   LoadingModal,
   BrowsePage,
   ProjectList
-} from "../";
-import ProtectedRoute from "../utils/ProtectedRoute";
+} from '../';
+
+import UpdateProjectForm from '../Form/UdateProjectForm/UpdateProjectForm'
+import ProtectedRoute from '../utils/ProtectedRoute';
 
 import { Switch, Route, Redirect } from "react-router-dom";
 
@@ -27,7 +29,7 @@ function App() {
       <Switch>
         <Route
           exact
-          path="/"
+          path='/login'
           render={() => {
             return <LoginPage />;
           }}
@@ -40,11 +42,12 @@ function App() {
         />
 
         <Route
-          path="/login"
-          render={() => {
-            return <LoginPage />;
+          path='/edit'
+          render={()=>{
+            return <UpdateProjectForm/>
           }}
-        />
+          />
+      
 
         <ProtectedRoute path="/donate" component={DonationPage} />
         <ProtectedRoute path="/browse" component={BrowsePage} />
