@@ -18,11 +18,13 @@
 }
 
 .BrowsePage {
+  font-family: "Yanone Kaffeesatz";
+
   .browse-controls {
-    font-family: "Yanone Kaffeesatz";
     display: flex;
     justify-content: flex-end;
     padding: 0 4%;
+    margin-bottom: 15px;
     @media (min-width: 700px) {
       padding: 0 10%;
     }
@@ -36,6 +38,28 @@
     & > p {
       margin: auto 0;
       font-size: 1rem;
+    }
+  }
+
+  .Projects {
+    padding: 0 4%;
+    color: $text-gray;
+    & > div {
+      display: flex;
+      font-size: 0.6rem;
+      margin-bottom: 15px;
+
+      & > .text-container {
+        padding: 10px 5% 0;
+        letter-spacing: 0.08em;
+      }
+    }
+
+    .text-container-title {
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      color: black;
     }
   }
 }
