@@ -1,3 +1,5 @@
+import { combineReducers } from "redux";
+
 import {
   UPDATE_DONATION_AMOUNT,
   CLEAR_DONATION,
@@ -56,6 +58,7 @@ export const initialState = {
       account: null
     }
   },
+
   auth: {
     error: {
       status: null
@@ -63,12 +66,16 @@ export const initialState = {
     errorResponse: {
       401: "Invalid email or password was submitted, please try again.",
       500: "There was an unexpected response trying to communicate with the server. Please try again later."
+    },
+    loading: {
+      phase: "",
+      active: false
     }
   },
-  loading: {
-    phase: "",
-    active: false
-  }
+
+  projects: [],
+  error: "",
+  isFetching: false
 };
 
 const addInitialState = {
@@ -106,12 +113,100 @@ export const addReducer = (state = addInitialState, action) => {
         error: action.payload
       };
     }
+    default:
+      return { ...state };
   }
 };
 
-export const rootReducer = (state = initialState, action) => {
-  console.log("reducer", action);
-  // reducers need to be split due to complexity and we can group them with related actions to simplify this reducer
+const modal = (state = { ...initialState.modal }, action) => {
+  console.log(state);
+  switch (action.type) {
+    case SHOW_MODAL:
+      return {
+        ...state,
+        [action.payload]: { show: true }
+      };
+    case HIDE_MODAL:
+      return {
+        ...state,
+        [action.payload]: { show: false }
+      };
+
+    default:
+      return {
+        ...state
+      };
+  }
+};
+
+const auth = (state = { ...initialState.auth }, action) => {
+  switch (action.type) {
+    case LOGIN_START:
+      return {
+        ...state,
+        loading: {
+          phase: "Logging in...",
+          active: true
+        }
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        loading: {
+          phase: "",
+          active: false
+        },
+
+        error: { status: null }
+      };
+    case LOGIN_FAILURE:
+      return {
+        ...state,
+        loading: {
+          phase: "",
+          active: false
+        },
+        error: { status: action.payload }
+      };
+    case REGISTER_START:
+      return {
+        ...state,
+        loading: {
+          phase: "Registering...",
+          active: true
+        }
+      };
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        loading: {
+          phase: "",
+          active: false
+        },
+        error: { status: null }
+      };
+    case REGISTER_FAILURE:
+      return {
+        ...state,
+        loading: {
+          phase: "",
+          active: false
+        },
+        error: { status: action.payload }
+      };
+
+    case CLEAR_ERROR_STATUS:
+      return {
+        ...state,
+        error: { status: null }
+      };
+
+    default:
+      return { ...state };
+  }
+};
+
+const user = (state = { ...initialState.user }, action) => {
   switch (action.type) {
     case UPDATE_DONATION_AMOUNT:
       return {
@@ -133,91 +228,15 @@ export const rootReducer = (state = initialState, action) => {
           }
         }
       };
-    case SHOW_MODAL:
-      return {
-        ...state,
-        modal: { ...state.modal, [action.payload]: { show: true } }
-      };
-    case HIDE_MODAL:
-      return {
-        ...state,
-        modal: { ...state.modal, [action.payload]: { show: false } }
-      };
-    case LOGIN_START:
-      return {
-        ...state,
-        loading: {
-          phase: "Logging in...",
-          active: true
-        }
-      };
-    case LOGIN_SUCCESS:
-      return {
-        ...state,
-        loading: {
-          phase: "",
-          active: false
-        },
-        user: {
-          ...state.user,
-          model: action.payload
-        },
-        auth: {
-          ...state.auth,
-          error: { status: null }
-        }
-      };
-    case LOGIN_FAILURE:
-      return {
-        ...state,
-        loading: {
-          phase: "",
-          active: false
-        },
-        auth: { ...state.auth, error: { status: action.payload } }
-      };
-    case REGISTER_START:
-      return {
-        ...state,
-        loading: {
-          phase: "Registering...",
-          active: true
-        }
-      };
-    case REGISTER_SUCCESS:
-      return {
-        ...state,
-        loading: {
-          phase: "",
-          active: false
-        },
-        user: {
-          ...state.user,
-          model: action.payload.data
-        },
-        auth: {
-          ...state.auth,
-          error: { status: null }
-        }
-      };
-    case REGISTER_FAILURE:
-      return {
-        ...state,
-        loading: {
-          phase: "",
-          active: false
-        },
-        auth: { ...state.auth, error: { status: action.payload } }
-      };
+    default:
+      return { ...state };
+  }
+};
 
-    case CLEAR_ERROR_STATUS:
-      return {
-        ...state,
-        auth: {
-          ...state.auth,
-          error: { status: null }
-        }
-      };
+const project = (state = { ...initialState.project }, action) => {
+  console.log("reducer", action);
+  // reducers need to be split due to complexity and we can group them with related actions to simplify this reducer
+  switch (action.type) {
     case FETCH_PROJECT_START:
       return {
         ...state,
@@ -244,6 +263,14 @@ export const rootReducer = (state = initialState, action) => {
       };
 
     default:
-      return state;
+      return { ...state };
   }
 };
+
+export const rootReducer = combineReducers({
+  addReducer,
+  auth,
+  modal,
+  user,
+  project
+});
