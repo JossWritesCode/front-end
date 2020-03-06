@@ -14,6 +14,6 @@ const LoadingModal = ({ phase, active }) => {
   );
 };
 
-const mapStateToProps = ({ loading: { phase, active } }) => ({ phase, active });
+const mapStateToProps = ({ auth: {loading: { phase, active }} }) => ({ phase, active });
 
 export default connect(mapStateToProps)(LoadingModal);
