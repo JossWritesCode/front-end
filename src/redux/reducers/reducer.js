@@ -31,13 +31,15 @@ export const initialState = {
       show: false
     }
   },
-  project:{
+  project: {
     id: '',
     projectname: '',
     description: '',
     username: '',
-    bio: ''
-  
+    bio: '',
+
+    error: '',
+    isFetching: false
   },
   user: {
     model: null,
@@ -67,11 +69,7 @@ export const initialState = {
   loading: {
     phase: '',
     active: false
-  },
-
-  projects: [],
-  error: '',
-  isFetching: false
+  }
 };
 
 const addInitialState = {
@@ -233,7 +231,7 @@ export const rootReducer = (state = initialState, action) => {
         isFetching: false
       };
     case CREATE_PROJECT:
-      return{
+      return {
         ...state,
         project: action.payload
       };
