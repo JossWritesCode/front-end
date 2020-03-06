@@ -52,7 +52,7 @@ const enhanceForm = compose(
       const credentials = { username: email, password };
       login(credentials)
         .then(() => {
-          history.push("/donate");
+          history.push("/browse");
         })
         .catch(err => {
           console.log(err);
