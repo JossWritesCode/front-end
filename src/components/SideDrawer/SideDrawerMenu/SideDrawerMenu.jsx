@@ -16,13 +16,15 @@ const SideDrawerMenu = ({ className = "", show }) => {
           to="/register"
         />
         <SideDrawerLink className="auth-link" text="Login" to="/login" />
-        <SideDrawerLink text="Events" />
-        <SideDrawerLink text="About Us" />
-        <SideDrawerLink text="Our Story" />
+        <SideDrawerLink text="Events" to="https://sixr.tv/events/" />
+        <SideDrawerLink
+          text="About Us"
+          to="http://crestdr.com/virtual-reality-funding-platform-1/UI/aboutus.html"
+        />
+        <SideDrawerLink text="Our Story" to="https://sixr.tv/about-us/" />
         <SideDrawerLink text="How to Donate" to="/donate" />
-        <SideDrawerLink text="Supporters" />
-        <SideDrawerLink text="Creators" />
-        <SideDrawerLink text="Contact Us" />
+        <SideDrawerLink text="Supporters" to="https://sixr.tv/network/" />
+        <SideDrawerLink text="Contact Us" to="https://sixr.tv/contact-us/" />
       </Modal>
     </div>
   );

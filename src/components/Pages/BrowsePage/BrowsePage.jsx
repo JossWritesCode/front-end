@@ -21,23 +21,21 @@ const BrowsePage = ({ className = "" }) => {
 
     getProjects();
   }, []);
-  const projectList = projects.map(
-    ({ id, projectname, projectdescription }) => {
-      return (
-        <Link key={id} to={`/edit/${id}`}>
-          <div>
-            <div className="image-container">
-              <img src="https://via.placeholder.com/122x77" alt="placeholder" />
-            </div>
-            <div className="text-container">
-              <div className="text-container-title">{projectname}</div>
-              <div>{projectdescription}</div>
-            </div>
+  const projectList = projects.map(({ id, projectname, description }) => {
+    return (
+      <Link key={id} to={`/edit/${id}`}>
+        <div>
+          <div className="image-container">
+            <img src="https://via.placeholder.com/122x77" alt="placeholder" />
           </div>
-        </Link>
-      );
-    }
-  );
+          <div className="text-container">
+            <div className="text-container-title">{projectname}</div>
+            <div>{description}</div>
+          </div>
+        </div>
+      </Link>
+    );
+  });
   return (
     <div className={`${className} BrowsePage Page`}>
       <Header title="Browse" />
